@@ -94,6 +94,14 @@
             touch-action: none;
         }
 
+        
+        /* Responsive Navigation spacing */
+        @media (max-width: 1280px) {
+            .nav-link { padding: 6px 10px; font-size: 0.82rem; gap: 5px; }
+            .glass-nav { padding: 8px 16px; }
+            .brand-text h1 { font-size: 1.15rem; }
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-void); }
@@ -763,24 +771,31 @@
 
         /* Incoming Ping Toast */
         .ping-notification-toast {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-150%);
-            background: rgba(17, 10, 31, 0.96);
-            border: 1px solid var(--rose-500);
+            position: fixed !important;
+            top: -150px !important; /* Completely hidden offscreen when inactive */
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            background: rgba(18, 11, 32, 0.98) !important;
+            border: 1px solid var(--rose-500) !important;
             border-radius: var(--radius-lg);
-            padding: 16px 24px;
-            z-index: 1000;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-            display: flex;
+            padding: 14px 22px;
+            z-index: 999999 !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(225, 29, 72, 0.4);
+            display: none !important; /* Hidden completely by default */
             align-items: center;
             gap: 16px;
-            transition: transform 0.4s var(--ease-out);
+            opacity: 0;
+            pointer-events: none;
+            transition: top 0.4s var(--ease-out), opacity 0.4s ease;
             max-width: 90vw;
         }
 
-        .ping-notification-toast.active { transform: translateX(-50%) translateY(0); }
+        .ping-notification-toast.active {
+            display: flex !important;
+            top: 25px !important; /* Clean floating banner below window top */
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
         .ping-toast-icon { font-size: 2rem; color: var(--rose-500); }
         .ping-toast-text h4 { font-family: var(--font-serif); font-size: 1.2rem; color: #fff; }
         .ping-toast-text p { font-size: 0.82rem; color: var(--text-secondary); }
@@ -1193,23 +1208,26 @@
 
         /* Admin Suite Modal */
         .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 3, 10, 0.88);
-            backdrop-filter: blur(16px);
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(6, 4, 12, 0.95) !important; /* High-performance obsidian - 0% lag, 120fps */
             z-index: 100000;
-            display: flex;
+            display: none !important; /* Display none when inactive for 0 layout overhead */
             align-items: center;
             justify-content: center;
             padding: 20px;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            overflow-y: auto;
+            transition: opacity 0.25s ease;
         }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-overlay.active {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
 
         .modal-window {
             background: linear-gradient(145deg, rgba(28, 19, 48, 0.96), rgba(14, 9, 25, 0.98));
@@ -1956,7 +1974,7 @@
             let lastTime = 0;
             function draw(currentTime) {
                 // Pause canvas calculations while login gate is active to guarantee 120fps typing with zero lag
-                if (document.body.classList.contains('gate-active')) {
+                if (document.body.classList.contains('gate-active') || document.querySelector('.modal-overlay.active')) {
                     requestAnimationFrame(draw);
                     return;
                 }
@@ -2208,7 +2226,11 @@
                 STATE.currentUser = { role: 'guest', name: 'Guest' };
             }
 
-            if (nameDisplay) nameDisplay.textContent = STATE.currentUser.name;
+            if (nameDisplay) {
+                const isMahin = (STATE.currentUser.role === 'admin');
+                const isSaminta = (STATE.currentUser.role === 'saminta');
+                nameDisplay.textContent = isMahin ? 'Mahin' : (isSaminta ? 'Saminta' : 'Guest');
+            }
             if (avatarIcon) avatarIcon.textContent = STATE.currentUser.name ? STATE.currentUser.name.charAt(0) : 'G';
 
             const isCouple = (STATE.currentUser.role === 'admin' || STATE.currentUser.role === 'saminta');
@@ -2663,7 +2685,6 @@
                 alert('Access Restricted to Syed Mahin Islam.');
                 return;
             }
-            playChime(600);
             const modal = document.getElementById('adminModal');
             if (modal) modal.classList.add('active');
 
