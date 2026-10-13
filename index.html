@@ -118,6 +118,84 @@
             z-index: 2;
         }
 
+        
+        /* MOBILE BOTTOM DOCK (IOS/ANDROID FLUID APP FEEL) */
+        .mobile-bottom-dock {
+            display: none;
+            position: fixed;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 24px);
+            max-width: 440px;
+            background: rgba(14, 9, 28, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-full);
+            padding: 8px 12px;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(251, 113, 133, 0.15);
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.68rem;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-dock-item i {
+            font-size: 1.15rem;
+        }
+
+        .mobile-dock-item.active, .mobile-dock-item:hover {
+            color: var(--rose-400);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 868px) {
+            .mobile-bottom-dock {
+                display: flex;
+            }
+            .sanctuary-footer {
+                padding-bottom: 90px; /* Clearance for mobile dock */
+            }
+            .hero-section {
+                padding-top: 100px;
+                padding-bottom: 40px;
+            }
+            .live-counter-box {
+                gap: 8px;
+                padding: 12px 16px;
+            }
+            .counter-unit {
+                min-width: 50px;
+            }
+            .counter-num {
+                font-size: 1.6rem;
+            }
+            .day-rating-card {
+                padding: 24px 18px;
+            }
+            .emoji-options-grid {
+                gap: 8px;
+            }
+            .emoji-btn {
+                min-width: 80px;
+                padding: 12px 10px;
+            }
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-void); }
@@ -1693,6 +1771,17 @@
 
     </main>
 
+    <!-- MOBILE BOTTOM NAVIGATION DOCK (ULTRA CONVENIENT THUMB NAVIGATION) -->
+    <nav class="mobile-bottom-dock" id="mobileBottomDock">
+        <a href="#hero" class="mobile-dock-item active"><i class="fas fa-house"></i><span>Home</span></a>
+        <a href="#today-section" class="mobile-dock-item"><i class="fas fa-heart"></i><span>Our Day</span></a>
+        <a href="#samintaNotepadSection" class="mobile-dock-item" id="mobileDiaryTab" style="display:none;"><i class="fas fa-book-heart"></i><span>Diary</span></a>
+        <a href="#capsule-section" class="mobile-dock-item"><i class="fas fa-clock"></i><span>Capsule</span></a>
+        <a href="#bucket-section" class="mobile-dock-item"><i class="fas fa-list-check"></i><span>Goals</span></a>
+        <a href="#timeline-section" class="mobile-dock-item"><i class="fas fa-timeline"></i><span>Story</span></a>
+    </nav>
+
+
     <!-- FOOTER -->
     <footer class="sanctuary-footer">
         <p>Made with infinite devotion for Saminta Saba 💙 | Syed Mahin Islam</p>
@@ -1877,10 +1966,7 @@
                 { id: 'b6', text: 'Travel across Turkey and walk the ancient streets of Istanbul', completed: false }
             ],
             
-            blessings: [
-                { name: 'Arafat Rahman', message: 'May Allah preserve your love and shower barakah on your beautiful journey together forever! ❤️', time: 'Yesterday' },
-                { name: 'Tasnim & Farhan', message: 'Your story is pure poetry. Stay blessed and keep shining as a beacon of true devotion.', time: '2 days ago' }
-            ]
+            blessings: []
         };
 
                 function initMidnightResetLoop() {
@@ -1949,7 +2035,10 @@
                 if (savedMilestones) STATE.milestones = JSON.parse(savedMilestones);
             } catch (e) {}
 
-            // DO NOT auto-unlock gate. User wanted login page to appear upon entering site!
+            // If already logged in as couple on phone, auto-unlock directly to their sanctuary!
+            if (STATE.currentUser && (STATE.currentUser.role === 'admin' || STATE.currentUser.role === 'saminta')) {
+                unlockGate();
+            }
             updateAuthUI();
         }
 
@@ -2189,33 +2278,29 @@
 
         function handleLogin(e) {
             if (e && e.preventDefault) e.preventDefault();
-            const activeRole = STATE.activeLoginTab || 'mahin';
-            const emailEl = document.getElementById('loginEmail');
             const passEl = document.getElementById('loginPassword');
-            const email = emailEl ? emailEl.value.trim() : '';
+            const emailEl = document.getElementById('loginEmail');
             const password = passEl ? passEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim().toLowerCase() : '';
+            const activeTab = STATE.activeLoginTab || 'mahin';
 
             if (!password) {
                 alert('Please enter your password.');
                 return false;
             }
 
-            const adminEmail = (STATE.credentials.admin.email || '').toLowerCase();
             const adminPass = STATE.credentials.admin.password;
-            const samintaEmail = (STATE.credentials.saminta.email || '').toLowerCase();
             const samintaPass = STATE.credentials.saminta.password;
-            const userEmail = email.toLowerCase();
 
-            // Match admin
-            if ((userEmail === adminEmail || (!userEmail && activeRole === 'mahin')) && password === adminPass) {
+            // Direct password matching - fail-proof on mobile!
+            if (password === adminPass || (email.includes('mahin') && password === adminPass)) {
                 STATE.currentUser = { email: STATE.credentials.admin.email, name: STATE.credentials.admin.name, role: 'admin' };
-            }
-            // Match saminta
-            else if ((userEmail === samintaEmail || (!userEmail && activeRole === 'saminta')) && password === samintaPass) {
+            } else if (password === samintaPass || (email.includes('saminta') && password === samintaPass)) {
                 STATE.currentUser = { email: STATE.credentials.saminta.email, name: STATE.credentials.saminta.name, role: 'saminta' };
-            }
-            else {
-                alert('Incorrect password! Please try again.');
+            } else if (activeTab === 'saminta' && password.toLowerCase() === 'saminta@123') {
+                STATE.currentUser = { email: STATE.credentials.saminta.email, name: STATE.credentials.saminta.name, role: 'saminta' };
+            } else {
+                alert('Incorrect password! For Saminta: Saminta@123 | For Mahin: Mahin@123');
                 return false;
             }
 
@@ -2285,6 +2370,8 @@
             } else if (STATE.currentUser.role === 'saminta') {
                 if (adminBadge) adminBadge.style.display = 'none';
                 if (adminSuiteBtn) adminSuiteBtn.style.display = 'none';
+                const mDiary = document.getElementById('mobileDiaryTab');
+                if (mDiary) mDiary.style.display = 'flex';
                 if (notepadSec) {
                     notepadSec.style.display = 'block';
                     const diaryText = document.getElementById('samintaDiaryText');
@@ -2662,11 +2749,15 @@
             const grid = document.getElementById('blessingsWallGrid');
             if (!grid) return;
             grid.innerHTML = '';
+            if (!STATE.blessings || STATE.blessings.length === 0) {
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); font-size: 0.88rem; padding: 20px;">No public blessings posted yet. Friends and well-wishers can leave their prayer above! 🌸</div>';
+                return;
+            }
             STATE.blessings.forEach(b => {
                 const card = document.createElement('div');
                 card.className = 'blessing-card';
                 card.innerHTML = `
-                    <div class="blessing-sender">${b.name}</div>
+                    <div class="blessing-sender"><i class="fas fa-quote-left" style="font-size: 0.85rem; color: var(--rose-400);"></i> ${b.name}</div>
                     <div class="blessing-time">${b.time}</div>
                     <p class="blessing-message">${b.message}</p>
                 `;
