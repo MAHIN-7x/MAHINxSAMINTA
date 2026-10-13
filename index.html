@@ -87,11 +87,11 @@
             line-height: 1.6;
         }
 
-        /* High-performance GPU layer */
-        .gpu-accelerated {
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            perspective: 1000px;
+        /* Gate Lock on Body */
+        body.gate-active {
+            overflow: hidden !important;
+            height: 100vh !important;
+            touch-action: none;
         }
 
         /* Custom Scrollbar */
@@ -139,41 +139,57 @@
            FULL-SCREEN ENTRY LOGIN GATEWAY (SHOWN IMMEDIATELY ON VISIT)
            ========================================================================== */
         .entry-gate-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 3, 10, 0.94);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(5, 3, 10, 0.92) !important;
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            z-index: 9999999 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 16px !important;
+            margin: 0 !important;
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.6s var(--ease-out), visibility 0.6s var(--ease-out);
+            overflow: hidden !important; /* No scrollbar or bottom empty void */
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        @media (max-height: 640px) {
+            .entry-gate-overlay {
+                overflow-y: auto !important;
+            }
         }
 
         .entry-gate-overlay.gate-unlocked {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
         }
 
+        /* Glassmorphic Floating Portal */
         .gate-portal-box {
-            background: linear-gradient(145deg, rgba(26, 18, 44, 0.96), rgba(12, 8, 22, 0.98));
-            border: 1px solid rgba(251, 113, 133, 0.25);
+            background: rgba(20, 13, 36, 0.78);
+            backdrop-filter: blur(35px) saturate(190%);
+            -webkit-backdrop-filter: blur(35px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             border-radius: var(--radius-xl);
-            max-width: 480px;
+            max-width: 440px;
             width: 100%;
-            padding: 42px 36px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(251, 113, 133, 0.15);
+            padding: 34px 30px 28px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(251, 113, 133, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.25);
             text-align: center;
-            transform: scale(1);
-            transition: transform 0.5s var(--ease-out);
+            position: relative;
+            animation: gateBoxFloat 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes gateBoxFloat {
+            0% { transform: translateY(0); box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 40px rgba(251, 113, 133, 0.12); }
+            100% { transform: translateY(-6px); box-shadow: 0 35px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(251, 113, 133, 0.22); }
         }
 
         .gate-monogram {
@@ -194,16 +210,16 @@
 
         .gate-title {
             font-family: var(--font-serif);
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 600;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .gate-subtitle {
-            font-size: 0.88rem;
+            font-size: 0.84rem;
             color: var(--text-secondary);
-            margin-bottom: 24px;
+            margin-bottom: 18px;
         }
 
         .portal-tabs {
@@ -1285,7 +1301,7 @@
         }
     </style>
 </head>
-<body class="gpu-accelerated">
+<body class="gate-active">
 
     <!-- Ambient Music (User triggers playback) -->
     <audio id="ambientMusic" loop preload="metadata">
@@ -1314,16 +1330,21 @@
             <!-- Login Form -->
             <form onsubmit="LoveApp.handleLogin(event)">
                 <div class="portal-input-group">
-                    <label for="loginEmail">Email Address</label>
-                    <input type="email" class="portal-input" id="loginEmail" value="islamsyedmahin@gmail.com" required autocomplete="email">
+                    <label for="loginEmail">Account Email (Optional if tab selected)</label>
+                    <input type="email" class="portal-input" id="loginEmail" placeholder="islamsyedmahin@gmail.com" autocomplete="email">
                 </div>
 
-                <div class="portal-input-group">
+                <div class="portal-input-group" style="position: relative;">
                     <label for="loginPassword">Password</label>
-                    <input type="password" class="portal-input" id="loginPassword" value="Mahin@123" required autocomplete="current-password">
+                    <div style="position: relative;">
+                        <input type="password" class="portal-input" id="loginPassword" placeholder="Enter secret password" required autocomplete="current-password" style="padding-right: 44px;">
+                        <button type="button" onclick="LoveApp.togglePasswordVisibility()" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem;" title="Show/Hide Password">
+                            <i class="fas fa-eye" id="passToggleIcon"></i>
+                        </button>
+                    </div>
                 </div>
 
-                <button type="submit" class="btn-portal-submit">
+                <button type="submit" class="btn-portal-submit" id="unlockGateBtn">
                     <i class="fas fa-heart"></i> Unlock Sanctuary
                 </button>
             </form>
@@ -1332,7 +1353,7 @@
                 <span>or explore as guest</span>
             </div>
 
-            <button class="btn-guest-enter" onclick="LoveApp.loginAsGuest()">
+            <button type="button" class="btn-guest-enter" id="btnGuestEnter" onclick="LoveApp.loginAsGuest(event)">
                 <i class="fas fa-compass"></i> Visit as Guest (Public Sight)
             </button>
         </div>
@@ -1460,6 +1481,9 @@
                             <i class="fas fa-fingerprint"></i>
                             <span>I'm Here Today & Sending Love (আজকেও আসছি ❤️)</span>
                         </button>
+                        <div id="guestStreakBadge" style="display: none; font-size: 0.84rem; color: var(--rose-300); background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); padding: 8px 18px; border-radius: var(--radius-full); margin-top: 6px; display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-shield-heart" style="color: var(--rose-500);"></i> Maintained daily by Mahin & Saminta
+                        </div>
                     </div>
 
                     <div class="user-status-card">
@@ -1478,7 +1502,7 @@
             </div>
 
             <!-- MISS-YOU PING DOCK -->
-            <div class="ping-action-strip">
+            <div class="ping-action-strip" id="pingActionStrip">
                 <button class="btn-ping" onclick="LoveApp.sendMissYouPing()">
                     <i class="fas fa-paper-plane"></i>
                     <span>Send "Miss You" Ping 💓</span>
@@ -1504,7 +1528,8 @@
             </div>
 
             <div class="day-rating-card">
-                <div class="emoji-options-grid" id="emojiGrid">
+                <div id="coupleRatingInputs">
+                    <div class="emoji-options-grid" id="emojiGrid">
                     <button class="emoji-btn" data-mood="Magical" onclick="LoveApp.selectMood(this, 'Magical')">
                         <span class="emoji-icon">🥰</span>
                         <span class="emoji-label">Magical</span>
@@ -1535,6 +1560,10 @@
                             <i class="fas fa-heart"></i> Save Today's Feeling
                         </button>
                     </div>
+                </div>
+                </div>
+                <div id="guestRatingNotice" style="display: none; padding: 12px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--rose-300); font-size: 0.88rem; margin-bottom: 20px;">
+                    <i class="fas fa-sparkles"></i> Mahin & Saminta's shared daily reflection journal. (Viewing mode)
                 </div>
 
                 <!-- Shared Day Ratings History Log (Visible to Both Mahin and Saminta) -->
@@ -2042,15 +2071,24 @@
         // =========================================================================
         function unlockGate() {
             const gate = document.getElementById('entryGateOverlay');
-            if (gate) gate.classList.add('gate-unlocked');
+            if (gate) {
+                gate.classList.add('gate-unlocked');
+                gate.style.display = 'none';
+                gate.style.pointerEvents = 'none';
+            }
+            document.body.classList.remove('gate-active');
+            document.body.style.overflow = 'auto';
         }
 
         function lockAndShowGate() {
             const gate = document.getElementById('entryGateOverlay');
             if (gate) gate.classList.remove('gate-unlocked');
+            document.body.classList.add('gate-active');
+            window.scrollTo(0, 0);
         }
 
         function switchLoginTab(role) {
+            STATE.activeLoginTab = role;
             const tabM = document.getElementById('tabMahin');
             const tabS = document.getElementById('tabSaminta');
             const emailInp = document.getElementById('loginEmail');
@@ -2059,28 +2097,67 @@
             if (role === 'mahin') {
                 if (tabM) tabM.classList.add('active');
                 if (tabS) tabS.classList.remove('active');
-                if (emailInp) emailInp.value = STATE.credentials.admin.email;
-                if (passInp) passInp.value = STATE.credentials.admin.password;
+                if (emailInp) {
+                    emailInp.value = '';
+                    emailInp.placeholder = 'islamsyedmahin@gmail.com';
+                }
             } else {
                 if (tabS) tabS.classList.add('active');
                 if (tabM) tabM.classList.remove('active');
-                if (emailInp) emailInp.value = STATE.credentials.saminta.email;
-                if (passInp) passInp.value = STATE.credentials.saminta.password;
+                if (emailInp) {
+                    emailInp.value = '';
+                    emailInp.placeholder = 'saminta.saba@gmail.com';
+                }
+            }
+            if (passInp) {
+                passInp.value = '';
+                passInp.placeholder = "Enter " + (role === "mahin" ? "Mahin" : "Saminta") + " password";
+            }
+        }
+
+        function togglePasswordVisibility() {
+            const inp = document.getElementById('loginPassword');
+            const icon = document.getElementById('passToggleIcon');
+            if (!inp) return;
+            if (inp.type === 'password') {
+                inp.type = 'text';
+                if (icon) icon.className = 'fas fa-eye-slash';
+            } else {
+                inp.type = 'password';
+                if (icon) icon.className = 'fas fa-eye';
             }
         }
 
         function handleLogin(e) {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value.trim();
-            const password = document.getElementById('loginPassword').value.trim();
+            if (e && e.preventDefault) e.preventDefault();
+            const activeRole = STATE.activeLoginTab || 'mahin';
+            const emailEl = document.getElementById('loginEmail');
+            const passEl = document.getElementById('loginPassword');
+            const email = emailEl ? emailEl.value.trim() : '';
+            const password = passEl ? passEl.value.trim() : '';
 
-            if (email === STATE.credentials.admin.email && password === STATE.credentials.admin.password) {
-                STATE.currentUser = { email: email, name: STATE.credentials.admin.name, role: 'admin' };
-            } else if (email === STATE.credentials.saminta.email && password === STATE.credentials.saminta.password) {
-                STATE.currentUser = { email: email, name: STATE.credentials.saminta.name, role: 'saminta' };
-            } else {
-                alert('Invalid password! Please check again.');
-                return;
+            if (!password) {
+                alert('Please enter your password.');
+                return false;
+            }
+
+            const adminEmail = (STATE.credentials.admin.email || '').toLowerCase();
+            const adminPass = STATE.credentials.admin.password;
+            const samintaEmail = (STATE.credentials.saminta.email || '').toLowerCase();
+            const samintaPass = STATE.credentials.saminta.password;
+            const userEmail = email.toLowerCase();
+
+            // Match admin
+            if ((userEmail === adminEmail || (!userEmail && activeRole === 'mahin')) && password === adminPass) {
+                STATE.currentUser = { email: STATE.credentials.admin.email, name: STATE.credentials.admin.name, role: 'admin' };
+            }
+            // Match saminta
+            else if ((userEmail === samintaEmail || (!userEmail && activeRole === 'saminta')) && password === samintaPass) {
+                STATE.currentUser = { email: STATE.credentials.saminta.email, name: STATE.credentials.saminta.name, role: 'saminta' };
+            }
+            else {
+                alert('Incorrect password! Please try again.');
+                return false;
             }
 
             playHeartPop();
@@ -2088,14 +2165,17 @@
             saveLocal('ms_current_user', STATE.currentUser);
             unlockGate();
             updateAuthUI();
+            return false;
         }
 
-        function loginAsGuest() {
+        function loginAsGuest(e) {
+            if (e && e.preventDefault) e.preventDefault();
             STATE.currentUser = { email: 'guest@sanctuary.internal', name: 'Guest Admirer', role: 'guest' };
             saveLocal('ms_current_user', STATE.currentUser);
-            playChime(500);
             unlockGate();
             updateAuthUI();
+            try { playChime(500); } catch(err) {}
+            return false;
         }
 
         function updateAuthUI() {
@@ -2111,6 +2191,29 @@
 
             if (nameDisplay) nameDisplay.textContent = STATE.currentUser.name;
             if (avatarIcon) avatarIcon.textContent = STATE.currentUser.name ? STATE.currentUser.name.charAt(0) : 'G';
+
+            const isCouple = (STATE.currentUser.role === 'admin' || STATE.currentUser.role === 'saminta');
+            const checkInBtn = document.getElementById('checkInBtn');
+            const guestStreakBadge = document.getElementById('guestStreakBadge');
+            const pingStrip = document.getElementById('pingActionStrip');
+            const coupleRatingInputs = document.getElementById('coupleRatingInputs');
+            const guestRatingNotice = document.getElementById('guestRatingNotice');
+
+            // Permissions based on user role
+            if (isCouple) {
+                if (checkInBtn) checkInBtn.style.display = 'inline-flex';
+                if (guestStreakBadge) guestStreakBadge.style.display = 'none';
+                if (pingStrip) pingStrip.style.display = 'flex';
+                if (coupleRatingInputs) coupleRatingInputs.style.display = 'block';
+                if (guestRatingNotice) guestRatingNotice.style.display = 'none';
+            } else {
+                // GUEST: READ ONLY! Hide interactive actions
+                if (checkInBtn) checkInBtn.style.display = 'none';
+                if (guestStreakBadge) guestStreakBadge.style.display = 'inline-flex';
+                if (pingStrip) pingStrip.style.display = 'none';
+                if (coupleRatingInputs) coupleRatingInputs.style.display = 'none';
+                if (guestRatingNotice) guestRatingNotice.style.display = 'block';
+            }
 
             if (STATE.currentUser.role === 'admin') {
                 if (adminBadge) adminBadge.style.display = 'inline-block';
@@ -2186,8 +2289,7 @@
                 STATE.attendance.saminta.time = nowTime;
                 sendNtfyNotification('Saminta Checked In! 💙', `Saminta has arrived at the sanctuary today at ${nowTime}.`, 'woman,heart');
             } else {
-                lockAndShowGate();
-                return;
+                return; // Guests cannot check in
             }
 
             STATE.streakCount += 1;
@@ -2244,7 +2346,7 @@
                     checkInBtn.innerHTML = '<i class="fas fa-heart-circle-check"></i> Already Checked-in Today ❤️ (Next unlocks at 12:00 AM)';
                 } else {
                     checkInBtn.disabled = false;
-                    checkInBtn.innerHTML = '<i class="fas fa-fingerprint"></i> <span>I'm Here Today & Sending Love (আজকেও আসছি ❤️)</span>';
+                    checkInBtn.innerHTML = '<i class="fas fa-fingerprint"></i> <span>I\'m Here Today & Sending Love (আজকেও আসছি ❤️)</span>';
                 }
             }
         }
@@ -2479,6 +2581,9 @@
         }
 
         function toggleBucketItem(id) {
+            if (!STATE.currentUser || STATE.currentUser.role === 'guest') {
+                return; // Guests cannot check or uncheck couple dreams
+            }
             playHeartPop();
             const item = STATE.bucketList.find(b => b.id === id);
             if (item) {
@@ -2775,6 +2880,7 @@
             toggleMusic,
             toggleSFX,
             switchLoginTab,
+            togglePasswordVisibility,
             handleLogin,
             loginAsGuest,
             lockAndShowGate,
@@ -2798,9 +2904,18 @@
         };
     })();
 
+    window.LoveApp = LoveApp;
     document.addEventListener('DOMContentLoaded', () => {
         LoveApp.init();
+        const gBtn = document.getElementById('btnGuestEnter');
+        if (gBtn) {
+            gBtn.addEventListener('click', (e) => {
+                LoveApp.loginAsGuest(e);
+            });
+        }
     });
     </script>
 </body>
 </html>
+index.html
+Displaying index.html.
