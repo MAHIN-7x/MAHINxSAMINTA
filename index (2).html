@@ -1,0 +1,2806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mahin & Saminta | Our Eternal Love Sanctuary ❤️</title>
+    <meta name="description" content="A private, ultra-luxury digital sanctuary of Syed Mahin Islam & Saminta Saba. Real-time love metrics, memory vault, daily streaks, and eternal vows.">
+    
+    <!-- Google Fonts: Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Supabase JS Client (v2) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* ==========================================================================
+           ULTRA-SMOOTH ARCHITECTURAL DESIGN SYSTEM (60-120 FPS ZERO LAG)
+           ========================================================================== */
+        :root {
+            --bg-void: #05030a;
+            --bg-deep: #090614;
+            --bg-surface: rgba(18, 13, 33, 0.85);
+            --bg-glass: rgba(255, 255, 255, 0.04);
+            --bg-glass-hover: rgba(255, 255, 255, 0.08);
+            
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(244, 162, 179, 0.3);
+            
+            --rose-300: #ffd1dc;
+            --rose-400: #fca5b8;
+            --rose-500: #fb7185;
+            --rose-gold: #e2a898;
+            --champagne: #fdf2e9;
+            --crimson: #e11d48;
+            --sapphire: #60a5fa;
+            --gold: #fbbf24;
+            
+            --text-primary: #fff5f7;
+            --text-secondary: #c9bfdb;
+            --text-muted: #8b80a6;
+            
+            --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            
+            --radius-sm: 10px;
+            --radius-md: 18px;
+            --radius-lg: 26px;
+            --radius-xl: 36px;
+            --radius-full: 9999px;
+            
+            --shadow-subtle: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --shadow-lux: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 35px rgba(251, 113, 133, 0.1);
+            
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-void);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            text-rendering: optimizeSpeed;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            background: #06040d;
+            line-height: 1.6;
+        }
+
+        /* High-performance GPU layer */
+        .gpu-accelerated {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-void); }
+        ::-webkit-scrollbar-thumb { background: rgba(251, 113, 133, 0.25); border-radius: var(--radius-full); }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(251, 113, 133, 0.5); }
+
+        /* Hardware-accelerated canvas background (Zero lag) */
+        #cosmosCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        /* Lightweight gradient backdrop without expensive blur filters */
+        .ambient-aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 50% 0%, rgba(225, 29, 72, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 80% 30%, rgba(96, 165, 250, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(251, 113, 133, 0.05) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .sanctuary-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ==========================================================================
+           FULL-SCREEN ENTRY LOGIN GATEWAY (SHOWN IMMEDIATELY ON VISIT)
+           ========================================================================== */
+        .entry-gate-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 3, 10, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.6s var(--ease-out), visibility 0.6s var(--ease-out);
+        }
+
+        .entry-gate-overlay.gate-unlocked {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .gate-portal-box {
+            background: linear-gradient(145deg, rgba(26, 18, 44, 0.96), rgba(12, 8, 22, 0.98));
+            border: 1px solid rgba(251, 113, 133, 0.25);
+            border-radius: var(--radius-xl);
+            max-width: 480px;
+            width: 100%;
+            padding: 42px 36px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(251, 113, 133, 0.15);
+            text-align: center;
+            transform: scale(1);
+            transition: transform 0.5s var(--ease-out);
+        }
+
+        .gate-monogram {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose-500), var(--sapphire));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 auto 16px;
+            box-shadow: 0 0 25px rgba(251, 113, 133, 0.4);
+        }
+
+        .gate-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .gate-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .portal-tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: var(--radius-full);
+            padding: 4px;
+            margin-bottom: 22px;
+            gap: 4px;
+        }
+
+        .portal-tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .portal-tab.active {
+            background: var(--rose-500);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+        }
+
+        .portal-input-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .portal-input-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .portal-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 13px 16px;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.25s ease;
+        }
+
+        .portal-input:focus {
+            border-color: var(--rose-400);
+            box-shadow: 0 0 15px rgba(251, 113, 133, 0.2);
+        }
+
+        .btn-portal-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--rose-500), var(--crimson));
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.5);
+            transition: all 0.25s ease;
+        }
+
+        .btn-portal-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(225, 29, 72, 0.7);
+        }
+
+        .gate-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0 16px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .gate-divider::before, .gate-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .gate-divider span {
+            padding: 0 12px;
+        }
+
+        .btn-guest-enter {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-primary);
+            padding: 13px;
+            border-radius: var(--radius-full);
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-guest-enter:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--rose-400);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           TOP NAVIGATION
+           ========================================================================== */
+        .glass-nav {
+            position: fixed;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 1280px;
+            background: rgba(14, 9, 28, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-full);
+            padding: 9px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .brand-monogram {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose-500), var(--sapphire));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .brand-text h1 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            background: linear-gradient(120deg, #fff, var(--rose-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-text span {
+            display: block;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 500;
+            padding: 7px 13px;
+            border-radius: var(--radius-full);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: var(--bg-glass-hover);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-full);
+            padding: 5px 14px 5px 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--rose-300);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .user-pill:hover {
+            border-color: var(--rose-400);
+            box-shadow: 0 0 15px rgba(251, 113, 133, 0.25);
+        }
+
+        .user-avatar-sm {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--crimson);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.7rem;
+        }
+
+        .admin-badge {
+            background: linear-gradient(135deg, #fbbf24, #d97706);
+            color: #000;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .icon-btn:hover {
+            color: #fff;
+            background: var(--bg-glass-hover);
+            transform: scale(1.05);
+            border-color: var(--rose-400);
+        }
+
+        .icon-btn.playing {
+            color: var(--rose-400);
+            border-color: var(--rose-500);
+        }
+
+        /* ==========================================================================
+           HERO & LIVE STATS
+           ========================================================================== */
+        .hero-section {
+            padding-top: 130px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+
+        .hero-pretitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            background: rgba(251, 113, 133, 0.09);
+            border: 1px solid rgba(251, 113, 133, 0.25);
+            color: var(--rose-300);
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-headline {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 7vw, 5.8rem);
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            margin-bottom: 18px;
+        }
+
+        .hero-headline .highlight-couple {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffffff 15%, var(--rose-300) 50%, var(--rose-500) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+        }
+
+        .live-counter-box {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 16px 28px;
+            border-radius: var(--radius-xl);
+            background: rgba(19, 13, 36, 0.85);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-lux);
+            margin-bottom: 40px;
+        }
+
+        .counter-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+        }
+
+        .counter-num {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            background: linear-gradient(180deg, #fff, var(--rose-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .counter-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .counter-sep {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: rgba(251, 113, 133, 0.4);
+            margin-top: -10px;
+        }
+
+        /* Streak & Attendance */
+        .streak-attendance-banner {
+            background: linear-gradient(135deg, rgba(28, 18, 50, 0.9), rgba(16, 11, 31, 0.95));
+            border: 1px solid rgba(251, 113, 133, 0.25);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow-lux);
+        }
+
+        .attendance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .user-status-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.25s ease;
+        }
+
+        .status-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            position: relative;
+        }
+
+        .status-avatar.mahin { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; }
+        .status-avatar.saminta { background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; }
+
+        .status-avatar .online-dot {
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+            background: #10b981;
+        }
+        .status-avatar .online-dot.offline { background: #6b7280; }
+
+        .status-info h4 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .status-badge {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .status-badge.checked { color: #34d399; font-weight: 600; }
+
+        .streak-center { text-align: center; }
+        .flame-icon-box { font-size: 2.6rem; color: #f97316; }
+
+        .streak-title {
+            font-family: var(--font-serif);
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 4px;
+            background: linear-gradient(135deg, #fff, #fbbf24, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .streak-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .btn-checkin {
+            background: linear-gradient(135deg, var(--rose-500), var(--crimson));
+            color: #fff;
+            border: none;
+            padding: 12px 26px;
+            border-radius: var(--radius-full);
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.5);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-checkin:hover { transform: translateY(-2px); }
+        .btn-checkin:disabled { background: rgba(255, 255, 255, 0.08); color: var(--text-muted); box-shadow: none; cursor: default; }
+
+        /* Ping Dock */
+        .ping-action-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .btn-ping {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(251, 113, 133, 0.3);
+            color: var(--rose-300);
+            padding: 11px 22px;
+            border-radius: var(--radius-full);
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .btn-ping:hover {
+            background: rgba(251, 113, 133, 0.15);
+            border-color: var(--rose-400);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .push-topic-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(96, 165, 250, 0.12);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            color: var(--sapphire);
+            padding: 6px 15px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .push-topic-pill:hover { background: rgba(96, 165, 250, 0.22); color: #fff; }
+
+        /* Incoming Ping Toast */
+        .ping-notification-toast {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-150%);
+            background: rgba(17, 10, 31, 0.96);
+            border: 1px solid var(--rose-500);
+            border-radius: var(--radius-lg);
+            padding: 16px 24px;
+            z-index: 1000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: transform 0.4s var(--ease-out);
+            max-width: 90vw;
+        }
+
+        .ping-notification-toast.active { transform: translateX(-50%) translateY(0); }
+        .ping-toast-icon { font-size: 2rem; color: var(--rose-500); }
+        .ping-toast-text h4 { font-family: var(--font-serif); font-size: 1.2rem; color: #fff; }
+        .ping-toast-text p { font-size: 0.82rem; color: var(--text-secondary); }
+        .ping-toast-actions { display: flex; gap: 8px; }
+        .ping-reply-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            padding: 7px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            cursor: pointer;
+        }
+        .ping-reply-btn:hover { background: var(--rose-500); }
+
+        /* Section Headings */
+        .section-header { text-align: center; margin-bottom: 45px; }
+        .section-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--rose-400);
+            margin-bottom: 6px;
+            display: block;
+            font-weight: 600;
+        }
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* ==========================================================================
+           CLEAN "TODAY'S DAY" (NO MENTION OF ADMIN VAULT OR MONITORING)
+           ========================================================================== */
+        .day-rating-card {
+            background: linear-gradient(145deg, rgba(28, 19, 48, 0.7), rgba(15, 10, 28, 0.85));
+            border: 1px solid rgba(251, 113, 133, 0.2);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            max-width: 800px;
+            margin: 0 auto 70px;
+            box-shadow: var(--shadow-lux);
+            text-align: center;
+        }
+
+        .emoji-options-grid {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .emoji-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            min-width: 95px;
+        }
+
+        .emoji-btn .emoji-icon { font-size: 2rem; }
+        .emoji-btn .emoji-label { font-size: 0.76rem; color: var(--text-secondary); font-weight: 500; }
+        .emoji-btn:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.08); border-color: var(--rose-400); }
+        .emoji-btn.selected {
+            background: rgba(251, 113, 133, 0.18);
+            border-color: var(--rose-500);
+            box-shadow: 0 0 20px rgba(251, 113, 133, 0.35);
+        }
+        .emoji-btn.selected .emoji-label { color: #fff; font-weight: 700; }
+
+        .note-input-container { margin-top: 18px; text-align: left; }
+        .note-input-container label { display: block; font-size: 0.86rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+
+        .custom-textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            resize: vertical;
+            min-height: 90px;
+            outline: none;
+            transition: border-color 0.25s ease;
+        }
+        .custom-textarea:focus { border-color: var(--rose-400); }
+
+        .btn-submit-day {
+            margin-top: 16px;
+            background: linear-gradient(135deg, var(--rose-500), var(--rose-gold));
+            color: #fff;
+            border: none;
+            padding: 13px 30px;
+            border-radius: var(--radius-full);
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .btn-submit-day:hover { transform: translateY(-2px); }
+
+        /* Saminta's Diary */
+        .saminta-notepad-section {
+            background: linear-gradient(145deg, rgba(22, 14, 40, 0.85), rgba(12, 8, 24, 0.95));
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            margin-bottom: 70px;
+            box-shadow: var(--shadow-lux);
+        }
+
+        .notepad-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .notepad-title-group h3 {
+            font-family: var(--font-serif);
+            font-size: 1.7rem;
+            color: var(--sapphire);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notepad-save-status { font-size: 0.78rem; color: var(--text-muted); }
+
+        .notepad-editor {
+            width: 100%;
+            min-height: 180px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.98rem;
+            line-height: 1.7;
+            outline: none;
+            resize: vertical;
+        }
+        .notepad-editor:focus { border-color: var(--sapphire); }
+
+        /* Time Capsule */
+        .time-capsule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 70px;
+        }
+
+        .capsule-card {
+            background: linear-gradient(145deg, rgba(25, 17, 43, 0.75), rgba(14, 9, 25, 0.9));
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 26px;
+            transition: all 0.25s ease;
+        }
+        .capsule-card:hover { transform: translateY(-4px); border-color: rgba(251, 113, 133, 0.35); }
+
+        .capsule-status-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            margin-bottom: 14px;
+        }
+        .capsule-status-tag.locked { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .capsule-status-tag.unlocked { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .capsule-title { font-family: var(--font-serif); font-size: 1.5rem; color: #fff; margin-bottom: 8px; }
+
+        .capsule-countdown {
+            display: flex;
+            gap: 10px;
+            margin: 16px 0;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 10px;
+            border-radius: var(--radius-md);
+        }
+
+        .capsule-c-unit { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
+        .capsule-c-num { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--rose-300); }
+        .capsule-c-label { font-size: 0.62rem; text-transform: uppercase; color: var(--text-muted); }
+
+        .capsule-preview {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            filter: blur(4px);
+            user-select: none;
+        }
+        .capsule-card.is-open .capsule-preview { filter: none; user-select: text; }
+
+        .btn-view-capsule {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            padding: 10px;
+            border-radius: var(--radius-full);
+            font-size: 0.86rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-view-capsule:hover { background: var(--rose-500); border-color: var(--rose-500); }
+
+        /* Bucket List */
+        .bucket-list-section {
+            background: linear-gradient(145deg, rgba(20, 13, 38, 0.75), rgba(12, 8, 23, 0.9));
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            margin-bottom: 70px;
+            box-shadow: var(--shadow-lux);
+        }
+
+        .bucket-progress-bar-wrap {
+            background: rgba(255, 255, 255, 0.06);
+            height: 7px;
+            border-radius: var(--radius-full);
+            margin: 18px 0 30px;
+            overflow: hidden;
+        }
+        .bucket-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--rose-500), #fbbf24);
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+        }
+
+        .bucket-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+
+        .bucket-item-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .bucket-item-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateX(3px); }
+
+        .bucket-checkbox {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid rgba(251, 113, 133, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .bucket-item-card.completed .bucket-checkbox { background: var(--rose-500); border-color: var(--rose-500); color: #fff; }
+        .bucket-item-card.completed .bucket-text { text-decoration: line-through; color: var(--text-muted); }
+        .bucket-text { font-size: 0.92rem; color: var(--text-primary); font-weight: 500; }
+
+        /* Timeline */
+        .timeline-container {
+            position: relative;
+            max-width: 860px;
+            margin: 0 auto 70px;
+            padding: 10px 0;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background: linear-gradient(180deg, transparent, var(--rose-500) 15%, var(--sapphire) 85%, transparent);
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 40px;
+            width: 50%;
+            padding: 0 30px;
+        }
+        .timeline-node.left { left: 0; text-align: right; }
+        .timeline-node.right { left: 50%; text-align: left; }
+
+        .timeline-dot {
+            position: absolute;
+            top: 18px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bg-deep);
+            border: 3px solid var(--rose-500);
+            box-shadow: 0 0 12px rgba(251, 113, 133, 0.6);
+            z-index: 2;
+        }
+        .timeline-node.left .timeline-dot { right: -10px; }
+        .timeline-node.right .timeline-dot { left: -10px; }
+
+        .timeline-card {
+            background: rgba(22, 14, 40, 0.85);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.25s ease;
+        }
+        .timeline-card:hover { transform: translateY(-3px); border-color: rgba(251, 113, 133, 0.35); }
+
+        .timeline-date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--rose-300);
+            margin-bottom: 6px;
+        }
+        .timeline-title { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: 5px; }
+        .timeline-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Guest Blessings */
+        .guest-wall-section {
+            background: linear-gradient(145deg, rgba(20, 13, 38, 0.7), rgba(11, 7, 22, 0.9));
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            margin-bottom: 70px;
+            box-shadow: var(--shadow-lux);
+        }
+
+        .blessing-form { max-width: 580px; margin: 0 auto 35px; display: flex; flex-direction: column; gap: 12px; }
+        .blessing-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            outline: none;
+        }
+        .btn-post-blessing {
+            background: linear-gradient(135deg, var(--rose-500), var(--sapphire));
+            color: #fff;
+            border: none;
+            padding: 12px 26px;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            align-self: center;
+            transition: all 0.25s ease;
+        }
+
+        .blessings-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+        .blessing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+        .blessing-sender { font-family: var(--font-serif); font-size: 1.1rem; color: var(--rose-300); font-weight: 600; margin-bottom: 4px; }
+        .blessing-time { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 10px; }
+        .blessing-message { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Admin Suite Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 3, 10, 0.88);
+            backdrop-filter: blur(16px);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-window {
+            background: linear-gradient(145deg, rgba(28, 19, 48, 0.96), rgba(14, 9, 25, 0.98));
+            border: 1px solid rgba(251, 113, 133, 0.25);
+            border-radius: var(--radius-xl);
+            max-width: 860px;
+            width: 95%;
+            padding: 36px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 12px;
+            margin-bottom: 22px;
+            overflow-x: auto;
+        }
+        .admin-tab-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .admin-tab-btn.active { background: var(--rose-500); border-color: var(--rose-500); color: #fff; }
+        .admin-panel-content { display: none; }
+        .admin-panel-content.active { display: block; }
+
+        .secret-password-card {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .password-display-box {
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: #fca5a5;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 6px 14px;
+            border-radius: 6px;
+        }
+
+        .sanctuary-footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 45px 0 65px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.86rem;
+        }
+
+        @media (max-width: 868px) {
+            .attendance-grid { grid-template-columns: 1fr; gap: 14px; }
+            .timeline-container::before { left: 18px; }
+            .timeline-node { width: 100%; left: 0 !important; padding-left: 50px; padding-right: 0; text-align: left !important; }
+            .timeline-dot { left: 8px !important; right: auto !important; }
+            .nav-links { display: none; }
+            .hero-headline { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body class="gpu-accelerated">
+
+    <!-- Ambient Music (User triggers playback) -->
+    <audio id="ambientMusic" loop preload="metadata">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 60FPS Ambient Cosmos Canvas & Background -->
+    <canvas id="cosmosCanvas"></canvas>
+    <div class="ambient-aurora"></div>
+
+    <!-- ==========================================================================
+         ENTRY LOGIN GATEWAY: IMMEDIATELY VISIBLE ON OPENING THE SITE
+         ========================================================================== -->
+    <div class="entry-gate-overlay" id="entryGateOverlay">
+        <div class="gate-portal-box">
+            <div class="gate-monogram">M&S</div>
+            <h2 class="gate-title">Enter Our Sanctuary</h2>
+            <p class="gate-subtitle">Mahin & Saminta | Eternal Love</p>
+
+            <!-- Role Selector Tabs -->
+            <div class="portal-tabs">
+                <button class="portal-tab active" id="tabMahin" onclick="LoveApp.switchLoginTab('mahin')">Mahin</button>
+                <button class="portal-tab" id="tabSaminta" onclick="LoveApp.switchLoginTab('saminta')">Saminta</button>
+            </div>
+
+            <!-- Login Form -->
+            <form onsubmit="LoveApp.handleLogin(event)">
+                <div class="portal-input-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" class="portal-input" id="loginEmail" value="islamsyedmahin@gmail.com" required autocomplete="email">
+                </div>
+
+                <div class="portal-input-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" class="portal-input" id="loginPassword" value="Mahin@123" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn-portal-submit">
+                    <i class="fas fa-heart"></i> Unlock Sanctuary
+                </button>
+            </form>
+
+            <div class="gate-divider">
+                <span>or explore as guest</span>
+            </div>
+
+            <button class="btn-guest-enter" onclick="LoveApp.loginAsGuest()">
+                <i class="fas fa-compass"></i> Visit as Guest (Public Sight)
+            </button>
+        </div>
+    </div>
+
+    <!-- INCOMING MISS-YOU PING TOAST -->
+    <div class="ping-notification-toast" id="pingToast" role="alert">
+        <div class="ping-toast-icon"><i class="fas fa-heart"></i></div>
+        <div class="ping-toast-text">
+            <h4 id="pingToastTitle">Incoming Love Ping! ❤️</h4>
+            <p id="pingToastDesc">Thinking of you right now.</p>
+        </div>
+        <div class="ping-toast-actions">
+            <button class="ping-reply-btn" onclick="LoveApp.replyPing('Miss you more! 💙')">Miss You More 💙</button>
+            <button class="ping-reply-btn" onclick="LoveApp.replyPing('Sending a tight hug 🤗')">Warm Hug 🤗</button>
+            <button class="ping-reply-btn" onclick="LoveApp.closePingToast()">✕</button>
+        </div>
+    </div>
+
+    <!-- TOP NAVIGATION -->
+    <nav class="glass-nav" id="mainNav">
+        <a href="#hero" class="nav-brand">
+            <div class="brand-monogram">M&S</div>
+            <div class="brand-text">
+                <h1>Mahin & Saminta</h1>
+                <span>Eternal Sanctuary</span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link"><i class="fas fa-sparkles"></i> Home</a></li>
+            <li><a href="#today-section" class="nav-link"><i class="fas fa-heart-pulse"></i> Our Day</a></li>
+            <li><a href="#capsule-section" class="nav-link"><i class="fas fa-clock"></i> Time Capsule</a></li>
+            <li><a href="#bucket-section" class="nav-link"><i class="fas fa-list-check"></i> Bucket List</a></li>
+            <li><a href="#timeline-section" class="nav-link"><i class="fas fa-timeline"></i> Milestones</a></li>
+            <li><a href="#blessings-section" class="nav-link"><i class="fas fa-praying-hands"></i> Blessings</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="musicBtn" title="Toggle Romantic Music" onclick="LoveApp.toggleMusic()">
+                <i class="fas fa-music"></i>
+            </button>
+
+            <button class="icon-btn" id="sfxBtn" title="Sound Effects" onclick="LoveApp.toggleSFX()">
+                <i class="fas fa-volume-high"></i>
+            </button>
+
+            <!-- User Pill / Switch Account -->
+            <div class="user-pill" id="userPill" onclick="LoveApp.lockAndShowGate()" title="Switch user or lock">
+                <div class="user-avatar-sm" id="userAvatarIcon">M</div>
+                <span id="userNameDisplay">Mahin</span>
+                <span class="admin-badge" id="adminBadge" style="display:none;">ADMIN</span>
+            </div>
+
+            <!-- Admin Crown (Only for Mahin) -->
+            <button class="icon-btn" id="adminSuiteBtn" style="display: none; border-color: #fbbf24; color: #fbbf24;" title="Admin Suite" onclick="LoveApp.openAdminModal()">
+                <i class="fas fa-crown"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="sanctuary-container">
+
+        <!-- HERO -->
+        <section class="hero-section" id="hero">
+            <div class="hero-pretitle">
+                <i class="fas fa-heart" style="color: var(--rose-500);"></i>
+                <span>Our Unbreakable Journey Since September 4, 2022</span>
+            </div>
+
+            <h1 class="hero-headline">
+                Forever In Love,<br>
+                <span class="highlight-couple">Mahin & Saminta</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Two souls intertwining across space and time. An interactive haven capturing every heartbeat, whispered promise, and milestone of forever.
+            </p>
+
+            <!-- LIVE CLOCK -->
+            <div class="live-counter-box" id="liveCounter">
+                <div class="counter-unit">
+                    <span class="counter-num" id="cntDays">000</span>
+                    <span class="counter-label">Days</span>
+                </div>
+                <span class="counter-sep">:</span>
+                <div class="counter-unit">
+                    <span class="counter-num" id="cntHours">00</span>
+                    <span class="counter-label">Hours</span>
+                </div>
+                <span class="counter-sep">:</span>
+                <div class="counter-unit">
+                    <span class="counter-num" id="cntMinutes">00</span>
+                    <span class="counter-label">Minutes</span>
+                </div>
+                <span class="counter-sep">:</span>
+                <div class="counter-unit">
+                    <span class="counter-num" id="cntSeconds">00</span>
+                    <span class="counter-label">Seconds</span>
+                </div>
+            </div>
+
+            <!-- DAILY ATTENDANCE & STREAK -->
+            <div class="streak-attendance-banner">
+                <div class="attendance-grid">
+                    <div class="user-status-card">
+                        <div class="status-avatar mahin">
+                            <i class="fas fa-user-tie"></i>
+                            <div class="online-dot" id="mahinDot"></div>
+                        </div>
+                        <div class="status-info">
+                            <h4>Syed Mahin Islam</h4>
+                            <div class="status-badge" id="mahinStatus">
+                                <i class="fas fa-clock"></i> Not Checked-in Today
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="streak-center">
+                        <div class="flame-icon-box"><i class="fas fa-fire"></i></div>
+                        <h2 class="streak-title" id="streakDisplay">🔥 45 Days Streak</h2>
+                        <p class="streak-desc">Continuous Daily Attendance Proof without breaking the flame!</p>
+                        <button class="btn-checkin" id="checkInBtn" onclick="LoveApp.handleCheckIn()">
+                            <i class="fas fa-fingerprint"></i>
+                            <span>I'm Here Today & Sending Love (আজকেও আসছি ❤️)</span>
+                        </button>
+                    </div>
+
+                    <div class="user-status-card">
+                        <div class="status-avatar saminta">
+                            <i class="fas fa-gem"></i>
+                            <div class="online-dot" id="samintaDot"></div>
+                        </div>
+                        <div class="status-info">
+                            <h4>Saminta Saba</h4>
+                            <div class="status-badge" id="samintaStatus">
+                                <i class="fas fa-clock"></i> Not Checked-in Today
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MISS-YOU PING DOCK -->
+            <div class="ping-action-strip">
+                <button class="btn-ping" onclick="LoveApp.sendMissYouPing()">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send "Miss You" Ping 💓</span>
+                </button>
+                <button class="btn-ping" onclick="LoveApp.triggerVirtualHug()">
+                    <i class="fas fa-hands-holding-child"></i>
+                    <span>Send 5-Second Tight Hug 🤗</span>
+                </button>
+                <a class="push-topic-pill" id="ntfySubscribeLink" href="https://ntfy.sh/mahin-saminta-love-sanctuary" target="_blank">
+                    <i class="fas fa-bell"></i> Subscribe to Phone Alerts (ntfy.sh)
+                </a>
+            </div>
+        </section>
+
+        <!-- OUR DAY RATING (COMPLETELY NATURAL & CLEAN) -->
+        <section class="day-rating-section" id="today-section">
+            <div class="section-header">
+                <span class="section-tag">Daily Connection</span>
+                <h2 class="section-title">How Was Today With Me?</h2>
+                <p class="section-desc">
+                    Pick how your heart felt today and share a sweet little reflection of our day.
+                </p>
+            </div>
+
+            <div class="day-rating-card">
+                <div class="emoji-options-grid" id="emojiGrid">
+                    <button class="emoji-btn" data-mood="Magical" onclick="LoveApp.selectMood(this, 'Magical')">
+                        <span class="emoji-icon">🥰</span>
+                        <span class="emoji-label">Magical</span>
+                    </button>
+                    <button class="emoji-btn" data-mood="Peaceful" onclick="LoveApp.selectMood(this, 'Peaceful')">
+                        <span class="emoji-icon">😊</span>
+                        <span class="emoji-label">Sweet & Calm</span>
+                    </button>
+                    <button class="emoji-btn" data-mood="Cozy" onclick="LoveApp.selectMood(this, 'Cozy')">
+                        <span class="emoji-icon">🥱</span>
+                        <span class="emoji-label">Cozy & Tired</span>
+                    </button>
+                    <button class="emoji-btn" data-mood="Longing" onclick="LoveApp.selectMood(this, 'Longing')">
+                        <span class="emoji-icon">🥺</span>
+                        <span class="emoji-label">Missed Deeply</span>
+                    </button>
+                    <button class="emoji-btn" data-mood="Needs Hug" onclick="LoveApp.selectMood(this, 'Needs Hug')">
+                        <span class="emoji-icon">🌧️</span>
+                        <span class="emoji-label">Needed You</span>
+                    </button>
+                </div>
+
+                <div class="note-input-container">
+                    <label for="dayNoteInput"><i class="fas fa-feather-pointed"></i> A little thought about our day:</label>
+                    <textarea class="custom-textarea" id="dayNoteInput" placeholder="Write anything on your mind about today..."></textarea>
+                    <div style="text-align: right;">
+                        <button class="btn-submit-day" onclick="LoveApp.submitDayRating()">
+                            <i class="fas fa-heart"></i> Save Today's Feeling
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Shared Day Ratings History Log (Visible to Both Mahin and Saminta) -->
+                <div class="ratings-history-wrapper" style="margin-top: 36px; text-align: left;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;">
+                        <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: #fff; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-calendar-heart" style="color: var(--rose-400);"></i> Our Daily Mood Journal & History
+                        </h4>
+                        <span style="font-size: 0.78rem; color: var(--text-muted);">Day-by-day record of how our days went</span>
+                    </div>
+                    <div id="sharedRatingsFeed" style="display: flex; flex-direction: column; gap: 12px; max-height: 380px; overflow-y: auto; padding-right: 4px;">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAMINTA'S SECRET DIARY (VISIBLE ONLY TO SAMINTA) -->
+        <section class="saminta-notepad-section" id="samintaNotepadSection" style="display: none;">
+            <div class="notepad-header">
+                <div class="notepad-title-group">
+                    <h3><i class="fas fa-book-heart"></i> Saminta's Little Diary 🌸</h3>
+                    <p style="font-size: 0.86rem; color: var(--text-secondary); margin-top: 4px;">
+                        A quiet corner for your raw thoughts, wishes, and feelings. Everything you write autosaves.
+                    </p>
+                </div>
+                <div class="notepad-save-status" id="notepadStatus">
+                    <i class="fas fa-check"></i> Autosaved locally
+                </div>
+            </div>
+
+            <textarea class="notepad-editor" id="samintaDiaryText" placeholder="Dear Diary, today my thoughts were..." oninput="LoveApp.handleDiaryInput()"></textarea>
+        </section>
+
+        <!-- TIME CAPSULE -->
+        <section class="time-capsule-section" id="capsule-section">
+            <div class="section-header">
+                <span class="section-tag">Sealed Moments</span>
+                <h2 class="section-title">The Time Capsules</h2>
+                <p class="section-desc">Letters locked until their promised anniversaries arrive.</p>
+            </div>
+            <div class="time-capsule-grid" id="capsulesGrid"></div>
+        </section>
+
+        <!-- BUCKET LIST -->
+        <section class="bucket-list-section" id="bucket-section">
+            <div class="section-header">
+                <span class="section-tag">Cherished Horizons</span>
+                <h2 class="section-title">Our Shared Bucket List</h2>
+                <p class="section-desc">Dreams we have pledged to conquer together hand in hand.</p>
+            </div>
+            <div class="bucket-progress-bar-wrap">
+                <div class="bucket-progress-fill" id="bucketProgressFill"></div>
+            </div>
+            <div class="bucket-items-grid" id="bucketGrid"></div>
+        </section>
+
+        <!-- SACRED TIMELINE -->
+        <section class="timeline-section" id="timeline-section">
+            <div class="section-header">
+                <span class="section-tag">Chapter by Chapter</span>
+                <h2 class="section-title">Our Sacred Timeline</h2>
+                <p class="section-desc">Every pivotal milestone of our story, preserved forever.</p>
+            </div>
+            <div class="timeline-container" id="timelineTrack"></div>
+        </section>
+
+        <!-- GUEST BLESSINGS -->
+        <section class="guest-wall-section" id="blessings-section">
+            <div class="section-header">
+                <span class="section-tag">Loved Ones' Echoes</span>
+                <h2 class="section-title">Guest Blessings Wall</h2>
+                <p class="section-desc">Guests visiting our sanctuary can leave their prayers and blessings here.</p>
+            </div>
+            <div class="blessing-form">
+                <input type="text" class="blessing-input" id="blessingName" placeholder="Your Name or Nickname">
+                <textarea class="blessing-input" id="blessingMessage" rows="3" placeholder="Leave your heartfelt prayer or blessing for Mahin & Saminta..."></textarea>
+                <button class="btn-post-blessing" onclick="LoveApp.postBlessing()">
+                    <i class="fas fa-sparkles"></i> Post Blessing
+                </button>
+            </div>
+            <div class="blessings-cards-grid" id="blessingsWallGrid"></div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="sanctuary-footer">
+        <p>Made with infinite devotion for Saminta Saba 💙 | Syed Mahin Islam</p>
+    </footer>
+
+    <!-- ADMIN SUITE (👑 MAHIN ONLY) -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-window">
+            <button class="modal-close-btn" onclick="LoveApp.closeAdminModal()">✕</button>
+
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+                <div style="width: 42px; height: 42px; border-radius: 50%; background: #fbbf24; color: #000; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.7rem; color: #fff;">Admin Command Suite</h3>
+                    <p style="font-size: 0.82rem; color: var(--text-secondary);">Master controls for <strong>islamsyedmahin@gmail.com</strong></p>
+                </div>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" onclick="LoveApp.switchAdminTab('credentials')">🔑 Passwords</button>
+                <button class="admin-tab-btn" onclick="LoveApp.switchAdminTab('ratings')">💌 Saminta's Day Ratings</button>
+                <button class="admin-tab-btn" onclick="LoveApp.switchAdminTab('diary')">📖 Saminta's Diary Vault</button>
+                <button class="admin-tab-btn" onclick="LoveApp.switchAdminTab('config')">⚡ Cloud & ntfy.sh</button>
+                <button class="admin-tab-btn" onclick="LoveApp.switchAdminTab('memory')">📸 Add Memory</button>
+            </div>
+
+            <!-- Passwords -->
+            <div class="admin-panel-content active" id="adminPanelCredentials">
+                <h4 style="color: #fff; margin-bottom: 12px; font-size: 1.05rem;">Live Password Monitor</h4>
+                <div class="secret-password-card">
+                    <div>
+                        <div style="font-size: 0.78rem; text-transform: uppercase; color: #fca5a5; font-weight: 700;">Saminta's Current Active Password:</div>
+                        <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Email: saminta.saba@gmail.com</div>
+                    </div>
+                    <div class="password-display-box" id="adminSamintaPassword">Saminta@123</div>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px;">
+                    <h5 style="color: #fff; margin-bottom: 8px;">Change Your Own Password:</h5>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" class="portal-input" id="adminNewPass" placeholder="Enter new password for Mahin">
+                        <button class="btn-checkin" style="white-space: nowrap;" onclick="LoveApp.changeAdminPassword()">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saminta's Ratings Vault -->
+            <div class="admin-panel-content" id="adminPanelRatings">
+                <h4 style="color: #fff; margin-bottom: 12px; font-size: 1.05rem;">Saminta's Daily Emotion Archive</h4>
+                <div id="adminRatingsList" style="display: flex; flex-direction: column; gap: 10px; max-height: 350px; overflow-y: auto;"></div>
+            </div>
+
+            <!-- Saminta's Diary Vault -->
+            <div class="admin-panel-content" id="adminPanelDiary">
+                <h4 style="color: #fff; margin-bottom: 10px; font-size: 1.05rem;">Saminta's Secret Notepad Mirror</h4>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">
+                    This reflects everything Saminta writes inside her private digital diary in real time.
+                </p>
+                <div id="adminDiaryMirror" style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; font-size: 0.95rem; line-height: 1.7; color: var(--rose-300); min-height: 140px; white-space: pre-wrap;">
+                    (No diary entries recorded yet)
+                </div>
+            </div>
+
+            <!-- Cloud & ntfy.sh Config -->
+            <div class="admin-panel-content" id="adminPanelConfig">
+                <h4 style="color: #fff; margin-bottom: 10px; font-size: 1.05rem;">ntfy.sh & Supabase Cloud Status</h4>
+                <div style="background: rgba(96, 165, 250, 0.08); border: 1px solid rgba(96, 165, 250, 0.25); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px;">
+                    <div class="portal-input-group">
+                        <label>ntfy.sh Push Topic Name</label>
+                        <input type="text" class="portal-input" id="cfgNtfyTopic" value="mahin-saminta-love-sanctuary">
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn-checkin" style="background: linear-gradient(135deg, var(--sapphire), #2563eb);" onclick="LoveApp.testNtfyPush()">
+                            <i class="fas fa-paper-plane"></i> Send Test Alert to Phone
+                        </button>
+                        <a id="adminNtfySubBtn" href="https://ntfy.sh/mahin-saminta-love-sanctuary" target="_blank" class="push-topic-pill" style="padding: 10px 18px;">
+                            <i class="fas fa-external-link-alt"></i> Open Topic on Phone
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portal-input-group">
+                    <label>Supabase Project URL</label>
+                    <input type="text" class="portal-input" id="cfgSupabaseUrl" value="https://iqsutvzenfwwygfvcenl.supabase.co">
+                </div>
+                <div class="portal-input-group">
+                    <label>Supabase Publishable Key</label>
+                    <input type="text" class="portal-input" id="cfgSupabaseKey" value="sb_publishable_ZOQRLbKYg1UNWUWx4efULA_WyXQUTYY">
+                </div>
+                <button class="btn-portal-submit" onclick="LoveApp.saveCloudConfig()">
+                    <i class="fas fa-floppy-disk"></i> Save Settings
+                </button>
+            </div>
+
+            <!-- Add Memory -->
+            <div class="admin-panel-content" id="adminPanelMemory">
+                <h4 style="color: #fff; margin-bottom: 12px; font-size: 1.05rem;">Add New Memory</h4>
+                <div class="portal-input-group">
+                    <label>Date (YYYY-MM-DD)</label>
+                    <input type="date" class="portal-input" id="newMemDate">
+                </div>
+                <div class="portal-input-group">
+                    <label>Title</label>
+                    <input type="text" class="portal-input" id="newMemTitle" placeholder="e.g. Special Dinner Date">
+                </div>
+                <div class="portal-input-group">
+                    <label>Story / Caption</label>
+                    <textarea class="custom-textarea" id="newMemDesc" placeholder="Describe the moment..."></textarea>
+                </div>
+                <button class="btn-portal-submit" onclick="LoveApp.addNewMemory()">
+                    <i class="fas fa-plus"></i> Save Memory
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC ENGINE -->
+    <script>
+    const LoveApp = (function() {
+        const STATE = {
+            currentUser: null,
+            isMusicPlaying: false,
+            isSFXEnabled: true,
+            audioCtx: null,
+            supabaseClient: null,
+            ntfyTopic: 'mahin-saminta-love-sanctuary',
+            ntfyEventSource: null,
+            
+            credentials: {
+                admin: { email: 'islamsyedmahin@gmail.com', password: 'Mahin@123', name: 'Syed Mahin Islam', role: 'admin' },
+                saminta: { email: 'saminta.saba@gmail.com', password: 'Saminta@123', name: 'Saminta Saba', role: 'saminta' }
+            },
+            
+            streakCount: 45,
+            attendance: {
+                mahin: { checked: false, time: null },
+                saminta: { checked: false, time: null }
+            },
+            
+            selectedMood: null,
+            dayRatings: [],
+            samintaDiaryContent: '',
+            
+            milestones: [
+                { date: '2020-10-26', title: 'First Conversation', icon: 'comments', desc: 'The serendipitous spark where destiny penned our first word.' },
+                { date: '2020-11-10', title: 'First Photo Seen', icon: 'camera', desc: 'A fleeting glance at your picture that captivated my entire horizon.' },
+                { date: '2020-11-18', title: 'Friendship Day', icon: 'handshake', desc: 'The solemn pact of companionship that laid the foundation of forever.' },
+                { date: '2022-09-04', title: 'Relationship Started', icon: 'heart', desc: 'Our two paths officially merged into a single eternal journey.' },
+                { date: '2023-01-16', title: 'First Meetup', icon: 'eye', desc: 'Standing before each other, time suspended and hearts roaring.' },
+                { date: '2023-05-05', title: 'First Kiss', icon: 'kiss', desc: 'A sacred touch of breathless devotion sealed beneath the skies.' },
+                { date: '2023-06-02', title: 'Marriage Anniversary', icon: 'ring', desc: 'Our sacred bond sanctioned before heaven and earth.' },
+                { date: '2023-10-17', title: 'First House Visit', icon: 'home', desc: 'Stepping across the threshold of our shared sanctuaries.' },
+                { date: '2024-03-13', title: 'First Flower', icon: 'seedling', desc: 'A delicate petal blooming as a silent token of affection.' },
+                { date: '2024-07-11', title: 'His House Visit', icon: 'house-user', desc: 'Welcoming my soul into the sanctum of my home.' }
+            ],
+            
+            capsules: [
+                {
+                    id: 'cap-1',
+                    title: 'Our Next Marriage Anniversary',
+                    unlockDate: '2027-06-02T00:00:00',
+                    content: 'My dearest Saminta, another year has blossomed where you were my greatest crown and sweetest peace. I loved you then, I love you now, and I will choose you in every lifetime.',
+                    author: 'Mahin'
+                },
+                {
+                    id: 'cap-2',
+                    title: 'A Letter for Our 30th Birthday',
+                    unlockDate: '2028-10-15T00:00:00',
+                    content: 'To the love of my life, look back at how far we have climbed from our very first text in 2020. You are still the only face I search for in every crowded room.',
+                    author: 'Mahin'
+                }
+            ],
+            
+            bucketList: [
+                { id: 'b1', text: 'Stargazing overnight in Sajek Valley clouds', completed: false },
+                { id: 'b2', text: 'Late-night rainy drive listening to our favorite melody', completed: true },
+                { id: 'b3', text: 'Perform holy Umrah / Hajj holding hands', completed: false },
+                { id: 'b4', text: 'Build our cozy dream home with a flower balcony', completed: false },
+                { id: 'b5', text: 'Cook a 4-course candlelit dinner together from scratch', completed: true },
+                { id: 'b6', text: 'Travel across Turkey and walk the ancient streets of Istanbul', completed: false }
+            ],
+            
+            blessings: [
+                { name: 'Arafat Rahman', message: 'May Allah preserve your love and shower barakah on your beautiful journey together forever! ❤️', time: 'Yesterday' },
+                { name: 'Tasnim & Farhan', message: 'Your story is pure poetry. Stay blessed and keep shining as a beacon of true devotion.', time: '2 days ago' }
+            ]
+        };
+
+                function initMidnightResetLoop() {
+            STATE.lastCheckedDayKey = getTodayKey();
+            setInterval(() => {
+                const currentKey = getTodayKey();
+                if (currentKey !== STATE.lastCheckedDayKey) {
+                    // Midnight (12:00 AM) arrived!
+                    STATE.lastCheckedDayKey = currentKey;
+                    STATE.attendance.mahin.checked = false;
+                    STATE.attendance.mahin.time = null;
+                    STATE.attendance.saminta.checked = false;
+                    STATE.attendance.saminta.time = null;
+                    saveLocal('ms_attendance_' + currentKey, STATE.attendance);
+                    updateStreakUI();
+                    console.log('Midnight reached: Check-in unlocked for the new day!');
+                }
+            }, 5000); // Check every 5 seconds
+        }
+
+        function init() {
+            loadLocalStore();
+            initCosmosCanvas();
+            startLiveClocks();
+            renderTimeline();
+            renderCapsules();
+            renderBucketList();
+            renderBlessings();
+            updateStreakUI();
+            renderSharedRatings();
+            initCloudServices();
+            initMidnightResetLoop();
+            setupNtfyListener();
+        }
+
+        function loadLocalStore() {
+            try {
+                const savedCreds = localStorage.getItem('ms_creds');
+                if (savedCreds) STATE.credentials = JSON.parse(savedCreds);
+
+                const savedUser = localStorage.getItem('ms_current_user');
+                if (savedUser) STATE.currentUser = JSON.parse(savedUser);
+
+                const savedStreak = localStorage.getItem('ms_streak');
+                if (savedStreak) STATE.streakCount = parseInt(savedStreak, 10);
+
+                const savedAttendance = localStorage.getItem('ms_attendance_' + getTodayKey());
+                if (savedAttendance) STATE.attendance = JSON.parse(savedAttendance);
+
+                const savedDiary = localStorage.getItem('ms_saminta_diary');
+                if (savedDiary) STATE.samintaDiaryContent = savedDiary;
+
+                const savedRatings = localStorage.getItem('ms_day_ratings');
+                if (savedRatings) STATE.dayRatings = JSON.parse(savedRatings);
+
+                const savedBucket = localStorage.getItem('ms_bucket_list');
+                if (savedBucket) STATE.bucketList = JSON.parse(savedBucket);
+
+                const savedBlessings = localStorage.getItem('ms_blessings');
+                if (savedBlessings) STATE.blessings = JSON.parse(savedBlessings);
+
+                const savedTopic = localStorage.getItem('ms_ntfy_topic');
+                if (savedTopic) STATE.ntfyTopic = savedTopic;
+            } catch (e) {}
+
+            // DO NOT auto-unlock gate. User wanted login page to appear upon entering site!
+            updateAuthUI();
+        }
+
+        function saveLocal(key, val) {
+            try {
+                localStorage.setItem(key, typeof val === 'string' ? val : JSON.stringify(val));
+            } catch(e) {}
+        }
+
+        function getTodayKey() {
+            const now = new Date();
+            return `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
+        }
+
+        // =========================================================================
+        // HIGH PERFORMANCE LIGHTWEIGHT CANVAS STARFIELD (60-120 FPS ZERO JANK)
+        // =========================================================================
+        function initCosmosCanvas() {
+            const canvas = document.getElementById('cosmosCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height, stars = [];
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                stars = [];
+                const count = Math.min(80, Math.floor((width * height) / 12000));
+                for (let i = 0; i < count; i++) {
+                    stars.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 1.5 + 0.4,
+                        baseAlpha: Math.random() * 0.6 + 0.3,
+                        speed: Math.random() * 0.02 + 0.005,
+                        phase: Math.random() * Math.PI * 2
+                    });
+                }
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            let lastTime = 0;
+            function draw(currentTime) {
+                if (currentTime - lastTime > 16) { // Cap at ~60fps for battery & smoothness
+                    lastTime = currentTime;
+                    ctx.clearRect(0, 0, width, height);
+                    for (let i = 0; i < stars.length; i++) {
+                        const s = stars[i];
+                        s.phase += s.speed;
+                        const a = s.baseAlpha + Math.sin(s.phase) * 0.25;
+                        ctx.beginPath();
+                        ctx.arc(s.x, s.y, s.radius, 0, 6.28);
+                        ctx.fillStyle = `rgba(255, 230, 240, ${a < 0.1 ? 0.1 : a})`;
+                        ctx.fill();
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+            requestAnimationFrame(draw);
+        }
+
+        // Web Audio Synthesizer
+        function getAudioContext() {
+            if (!STATE.audioCtx) {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtx) STATE.audioCtx = new AudioCtx();
+            }
+            if (STATE.audioCtx && STATE.audioCtx.state === 'suspended') {
+                STATE.audioCtx.resume();
+            }
+            return STATE.audioCtx;
+        }
+
+        function playChime(freq = 528) {
+            if (!STATE.isSFXEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.5);
+            } catch(e) {}
+        }
+
+        function playHeartPop() {
+            if (!STATE.isSFXEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(320, ctx.currentTime);
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.2);
+            } catch(e) {}
+        }
+
+        function toggleMusic() {
+            const audio = document.getElementById('ambientMusic');
+            const btn = document.getElementById('musicBtn');
+            if (!audio) return;
+            if (STATE.isMusicPlaying) {
+                audio.pause();
+                STATE.isMusicPlaying = false;
+                btn.classList.remove('playing');
+            } else {
+                audio.play().then(() => {
+                    STATE.isMusicPlaying = true;
+                    btn.classList.add('playing');
+                    playChime(660);
+                }).catch(() => {});
+            }
+        }
+
+        function toggleSFX() {
+            STATE.isSFXEnabled = !STATE.isSFXEnabled;
+            const btn = document.getElementById('sfxBtn');
+            if (btn) {
+                btn.innerHTML = STATE.isSFXEnabled ? '<i class="fas fa-volume-high"></i>' : '<i class="fas fa-volume-xmark"></i>';
+            }
+            if (STATE.isSFXEnabled) playChime(440);
+        }
+
+        // Clock
+        function startLiveClocks() {
+            const startDate = new Date('2022-09-04T00:00:00').getTime();
+            function update() {
+                const now = Date.now();
+                const diff = now - startDate;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                const elD = document.getElementById('cntDays');
+                const elH = document.getElementById('cntHours');
+                const elM = document.getElementById('cntMinutes');
+                const elS = document.getElementById('cntSeconds');
+
+                if (elD) elD.textContent = String(days).padStart(3, '0');
+                if (elH) elH.textContent = String(hours).padStart(2, '0');
+                if (elM) elM.textContent = String(minutes).padStart(2, '0');
+                if (elS) elS.textContent = String(seconds).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
+        }
+
+        // =========================================================================
+        // GATEWAY OPEN / CLOSE CONTROLLER
+        // =========================================================================
+        function unlockGate() {
+            const gate = document.getElementById('entryGateOverlay');
+            if (gate) gate.classList.add('gate-unlocked');
+        }
+
+        function lockAndShowGate() {
+            const gate = document.getElementById('entryGateOverlay');
+            if (gate) gate.classList.remove('gate-unlocked');
+        }
+
+        function switchLoginTab(role) {
+            const tabM = document.getElementById('tabMahin');
+            const tabS = document.getElementById('tabSaminta');
+            const emailInp = document.getElementById('loginEmail');
+            const passInp = document.getElementById('loginPassword');
+
+            if (role === 'mahin') {
+                if (tabM) tabM.classList.add('active');
+                if (tabS) tabS.classList.remove('active');
+                if (emailInp) emailInp.value = STATE.credentials.admin.email;
+                if (passInp) passInp.value = STATE.credentials.admin.password;
+            } else {
+                if (tabS) tabS.classList.add('active');
+                if (tabM) tabM.classList.remove('active');
+                if (emailInp) emailInp.value = STATE.credentials.saminta.email;
+                if (passInp) passInp.value = STATE.credentials.saminta.password;
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            if (email === STATE.credentials.admin.email && password === STATE.credentials.admin.password) {
+                STATE.currentUser = { email: email, name: STATE.credentials.admin.name, role: 'admin' };
+            } else if (email === STATE.credentials.saminta.email && password === STATE.credentials.saminta.password) {
+                STATE.currentUser = { email: email, name: STATE.credentials.saminta.name, role: 'saminta' };
+            } else {
+                alert('Invalid password! Please check again.');
+                return;
+            }
+
+            playHeartPop();
+            fireConfetti();
+            saveLocal('ms_current_user', STATE.currentUser);
+            unlockGate();
+            updateAuthUI();
+        }
+
+        function loginAsGuest() {
+            STATE.currentUser = { email: 'guest@sanctuary.internal', name: 'Guest Admirer', role: 'guest' };
+            saveLocal('ms_current_user', STATE.currentUser);
+            playChime(500);
+            unlockGate();
+            updateAuthUI();
+        }
+
+        function updateAuthUI() {
+            const nameDisplay = document.getElementById('userNameDisplay');
+            const avatarIcon = document.getElementById('userAvatarIcon');
+            const adminBadge = document.getElementById('adminBadge');
+            const adminSuiteBtn = document.getElementById('adminSuiteBtn');
+            const notepadSec = document.getElementById('samintaNotepadSection');
+
+            if (!STATE.currentUser) {
+                STATE.currentUser = { role: 'guest', name: 'Guest' };
+            }
+
+            if (nameDisplay) nameDisplay.textContent = STATE.currentUser.name;
+            if (avatarIcon) avatarIcon.textContent = STATE.currentUser.name ? STATE.currentUser.name.charAt(0) : 'G';
+
+            if (STATE.currentUser.role === 'admin') {
+                if (adminBadge) adminBadge.style.display = 'inline-block';
+                if (adminSuiteBtn) adminSuiteBtn.style.display = 'flex';
+                if (notepadSec) notepadSec.style.display = 'none';
+            } else if (STATE.currentUser.role === 'saminta') {
+                if (adminBadge) adminBadge.style.display = 'none';
+                if (adminSuiteBtn) adminSuiteBtn.style.display = 'none';
+                if (notepadSec) {
+                    notepadSec.style.display = 'block';
+                    const diaryText = document.getElementById('samintaDiaryText');
+                    if (diaryText) diaryText.value = STATE.samintaDiaryContent || '';
+                }
+            } else {
+                if (adminBadge) adminBadge.style.display = 'none';
+                if (adminSuiteBtn) adminSuiteBtn.style.display = 'none';
+                if (notepadSec) notepadSec.style.display = 'none';
+            }
+
+            updateStreakUI();
+        }
+
+        // =========================================================================
+        // NTFY.SH PUSH ENGINE
+        // =========================================================================
+        function sendNtfyNotification(title, message, tags = 'heart', priority = 'default') {
+            const topic = STATE.ntfyTopic || 'mahin-saminta-love-sanctuary';
+            try {
+                fetch(`https://ntfy.sh/${topic}`, {
+                    method: 'POST',
+                    body: message,
+                    headers: { 'Title': title, 'Priority': priority, 'Tags': tags, 'Click': window.location.href }
+                }).catch(() => {});
+            } catch(e) {}
+        }
+
+        function setupNtfyListener() {
+            const topic = STATE.ntfyTopic || 'mahin-saminta-love-sanctuary';
+            if (STATE.ntfyEventSource) STATE.ntfyEventSource.close();
+            try {
+                STATE.ntfyEventSource = new EventSource(`https://ntfy.sh/${topic}/sse`);
+                STATE.ntfyEventSource.onmessage = function(event) {
+                    try {
+                        const data = JSON.parse(event.data);
+                        if (data.event === 'message') {
+                            showToastBanner(data.title || 'Love Alert! ❤️', data.message);
+                            playHeartPop();
+                        }
+                    } catch(e) {}
+                };
+            } catch(e) {}
+        }
+
+        function testNtfyPush() {
+            sendNtfyNotification('Sanctuary Test! ❤️', 'Hello from Mahin & Saminta Sanctuary! Mobile push notifications are working smoothly.', 'tada,heart', 'high');
+            alert(`Test notification sent to ntfy.sh topic: "${STATE.ntfyTopic}"!\n\nOpen https://ntfy.sh/${STATE.ntfyTopic} on your phone to verify.`);
+        }
+
+        // Attendance & Streak
+        function handleCheckIn() {
+            playHeartPop();
+            fireConfetti();
+
+            const role = STATE.currentUser ? STATE.currentUser.role : 'guest';
+            const nowTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            if (role === 'admin') {
+                STATE.attendance.mahin.checked = true;
+                STATE.attendance.mahin.time = nowTime;
+                sendNtfyNotification('Mahin Checked In! 💛', `Mahin has arrived at the sanctuary today at ${nowTime}.`, 'man,heart');
+            } else if (role === 'saminta') {
+                STATE.attendance.saminta.checked = true;
+                STATE.attendance.saminta.time = nowTime;
+                sendNtfyNotification('Saminta Checked In! 💙', `Saminta has arrived at the sanctuary today at ${nowTime}.`, 'woman,heart');
+            } else {
+                lockAndShowGate();
+                return;
+            }
+
+            STATE.streakCount += 1;
+            saveLocal('ms_streak', STATE.streakCount);
+            saveLocal('ms_attendance_' + getTodayKey(), STATE.attendance);
+            updateStreakUI();
+
+            if (STATE.supabaseClient) {
+                STATE.supabaseClient.from('sanctuary_users').update({
+                    last_checkin: new Date().toISOString(),
+                    streak_count: STATE.streakCount
+                }).eq('role', role).then(() => {}).catch(() => {});
+            }
+        }
+
+        function updateStreakUI() {
+            const streakDisplay = document.getElementById('streakDisplay');
+            if (streakDisplay) streakDisplay.textContent = `🔥 ${STATE.streakCount} Days Streak`;
+
+            const mahinStatus = document.getElementById('mahinStatus');
+            const mahinDot = document.getElementById('mahinDot');
+            if (mahinStatus) {
+                if (STATE.attendance.mahin.checked) {
+                    mahinStatus.className = 'status-badge checked';
+                    mahinStatus.innerHTML = `<i class="fas fa-check-circle"></i> Checked-in at ${STATE.attendance.mahin.time || '10:15 AM'}`;
+                    if (mahinDot) mahinDot.className = 'online-dot';
+                } else {
+                    mahinStatus.className = 'status-badge';
+                    mahinStatus.innerHTML = `<i class="fas fa-clock"></i> Not Checked-in Today`;
+                    if (mahinDot) mahinDot.className = 'online-dot offline';
+                }
+            }
+
+            const samintaStatus = document.getElementById('samintaStatus');
+            const samintaDot = document.getElementById('samintaDot');
+            if (samintaStatus) {
+                if (STATE.attendance.saminta.checked) {
+                    samintaStatus.className = 'status-badge checked';
+                    samintaStatus.innerHTML = `<i class="fas fa-check-circle"></i> Checked-in at ${STATE.attendance.saminta.time || '11:20 AM'}`;
+                    if (samintaDot) samintaDot.className = 'online-dot';
+                } else {
+                    samintaStatus.className = 'status-badge';
+                    samintaStatus.innerHTML = `<i class="fas fa-clock"></i> Waiting for Her Arrival...`;
+                    if (samintaDot) samintaDot.className = 'online-dot offline';
+                }
+            }
+
+            const checkInBtn = document.getElementById('checkInBtn');
+            if (checkInBtn && STATE.currentUser) {
+                const userRole = STATE.currentUser.role;
+                if ((userRole === 'admin' && STATE.attendance.mahin.checked) ||
+                    (userRole === 'saminta' && STATE.attendance.saminta.checked)) {
+                    checkInBtn.disabled = true;
+                    checkInBtn.innerHTML = '<i class="fas fa-heart-circle-check"></i> Already Checked-in Today ❤️ (Next unlocks at 12:00 AM)';
+                } else {
+                    checkInBtn.disabled = false;
+                    checkInBtn.innerHTML = '<i class="fas fa-fingerprint"></i> <span>I'm Here Today & Sending Love (আজকেও আসছি ❤️)</span>';
+                }
+            }
+        }
+
+        // Pings
+        function sendMissYouPing() {
+            playChime(700);
+            fireConfetti();
+            const sender = STATE.currentUser ? STATE.currentUser.name : 'Someone';
+            showToastBanner(`${sender} is missing you right now! ❤️`, 'Tap below to return the embrace and send love back.');
+            sendNtfyNotification(`${sender} is Missing You! ❤️`, `${sender} just clicked "Miss You" in our sanctuary. Tap to respond!`, 'heart', 'urgent');
+        }
+
+        function triggerVirtualHug() {
+            playHeartPop();
+            fireConfetti();
+            const sender = STATE.currentUser ? STATE.currentUser.name : 'Someone';
+            showToastBanner(`Warm Hug Delivered! 🤗`, `${sender} just wrapped you in a tight, 5-second embrace.`);
+            sendNtfyNotification(`Warm Hug from ${sender}! 🤗`, `${sender} sent you a tight, 5-second warm hug!`, 'hugging_face,heart', 'high');
+        }
+
+        function showToastBanner(title, desc) {
+            const toast = document.getElementById('pingToast');
+            const tTitle = document.getElementById('pingToastTitle');
+            const tDesc = document.getElementById('pingToastDesc');
+            if (toast && tTitle && tDesc) {
+                tTitle.textContent = title;
+                tDesc.textContent = desc;
+                toast.classList.add('active');
+                setTimeout(() => { toast.classList.remove('active'); }, 5000);
+            }
+        }
+
+        function replyPing(text) {
+            playHeartPop();
+            closePingToast();
+            showToastBanner(`Reply Sent! 💙`, `You responded: "${text}"`);
+            const sender = STATE.currentUser ? STATE.currentUser.name : 'Partner';
+            sendNtfyNotification(`Love Reply from ${sender}! 💙`, `${sender} replied: "${text}"`, 'sparkles,blue_heart');
+        }
+
+        function closePingToast() {
+            const toast = document.getElementById('pingToast');
+            if (toast) toast.classList.remove('active');
+        }
+
+        // =========================================================================
+        // FEATURE 3: TODAY'S DAY RATING (NO SPOILERS / NO ADMIN HINTS)
+        // =========================================================================
+        function selectMood(btn, mood) {
+            playChime(500);
+            document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            STATE.selectedMood = mood;
+        }
+
+        function submitDayRating() {
+            if (!STATE.selectedMood) {
+                alert('Please pick an emoji for how today felt ❤️');
+                return;
+            }
+            playHeartPop();
+            fireConfetti();
+
+            const noteInput = document.getElementById('dayNoteInput');
+            const noteText = noteInput ? noteInput.value.trim() : '';
+
+            const entry = {
+                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                mood: STATE.selectedMood,
+                note: noteText,
+                sender: STATE.currentUser ? STATE.currentUser.name : 'Saminta Saba',
+                timestamp: Date.now()
+            };
+
+            STATE.dayRatings.unshift(entry);
+            saveLocal('ms_day_ratings', STATE.dayRatings);
+
+            if (noteInput) noteInput.value = '';
+            
+            // Clean romantic confirmation without revealing admin monitoring!
+            alert('Your thoughts for today have been saved ❤️');
+
+            renderAdminRatings();
+
+            if (STATE.supabaseClient) {
+                STATE.supabaseClient.from('day_ratings').insert([{
+                    mood: STATE.selectedMood,
+                    note: noteText,
+                    sender_name: STATE.currentUser ? STATE.currentUser.name : 'Saminta Saba'
+                }]).then(() => {}).catch(() => {});
+            }
+        }
+
+        // Saminta Diary (No spoilers)
+        let diaryDebounceTimer = null;
+        function handleDiaryInput() {
+            clearTimeout(diaryDebounceTimer);
+            diaryDebounceTimer = setTimeout(() => {
+                const text = document.getElementById('samintaDiaryText').value;
+                STATE.samintaDiaryContent = text;
+                saveLocal('ms_saminta_diary', text);
+
+                const status = document.getElementById('notepadStatus');
+                if (status) {
+                    status.innerHTML = '<i class="fas fa-check"></i> Autosaved';
+                    setTimeout(() => { status.innerHTML = '<i class="fas fa-check"></i> Autosaved locally'; }, 1500);
+                }
+
+                const mirror = document.getElementById('adminDiaryMirror');
+                if (mirror) mirror.textContent = text || '(No diary entries recorded yet)';
+
+                if (STATE.supabaseClient) {
+                    STATE.supabaseClient.from('saminta_diary').upsert({
+                        id: 1,
+                        content: text,
+                        updated_at: new Date().toISOString()
+                    }).then(() => {}).catch(() => {});
+                }
+            }, 500);
+        }
+
+        // Timeline
+        function renderTimeline() {
+            const container = document.getElementById('timelineTrack');
+            if (!container) return;
+            container.innerHTML = '';
+
+            STATE.milestones.forEach((m, idx) => {
+                const isLeft = idx % 2 === 0;
+                const node = document.createElement('div');
+                node.className = `timeline-node ${isLeft ? 'left' : 'right'}`;
+
+                const d = new Date(m.date);
+                const dateStr = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                node.innerHTML = `
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date-badge">
+                            <i class="fas fa-${m.icon}"></i>
+                            <span>${dateStr}</span>
+                        </div>
+                        <h3 class="timeline-title">${m.title}</h3>
+                        <p class="timeline-desc">${m.desc}</p>
+                    </div>
+                `;
+                container.appendChild(node);
+            });
+        }
+
+        // Capsules
+        function renderCapsules() {
+            const grid = document.getElementById('capsulesGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            STATE.capsules.forEach(cap => {
+                const now = new Date();
+                const unlock = new Date(cap.unlockDate);
+                const isUnlocked = now >= unlock;
+                const diff = Math.max(0, unlock - now);
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+                const card = document.createElement('div');
+                card.className = `capsule-card ${isUnlocked ? 'is-open' : ''}`;
+
+                card.innerHTML = `
+                    <div class="capsule-status-tag ${isUnlocked ? 'unlocked' : 'locked'}">
+                        <i class="fas fa-${isUnlocked ? 'lock-open' : 'lock'}"></i>
+                        <span>${isUnlocked ? 'UNSEALED' : 'TIME LOCKED'}</span>
+                    </div>
+                    <h3 class="capsule-title">${cap.title}</h3>
+                    <div class="capsule-countdown">
+                        <div class="capsule-c-unit">
+                            <span class="capsule-c-num">${days}</span>
+                            <span class="capsule-c-label">Days Left</span>
+                        </div>
+                        <div class="capsule-c-unit">
+                            <span class="capsule-c-num">${hours}</span>
+                            <span class="capsule-c-label">Hours</span>
+                        </div>
+                    </div>
+                    <p class="capsule-preview">${isUnlocked ? cap.content : 'This letter remains mystically locked in our vault until the countdown reaches zero...'}</p>
+                    <button class="btn-view-capsule" onclick="LoveApp.viewCapsule('${cap.id}')">
+                        <i class="fas fa-eye"></i> ${isUnlocked ? 'Read Secret Letter' : 'Inspect Sacred Seal'}
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function viewCapsule(id) {
+            const cap = STATE.capsules.find(c => c.id === id);
+            if (!cap) return;
+            const now = new Date();
+            const unlock = new Date(cap.unlockDate);
+
+            if (now < unlock) {
+                alert(`🔒 Locked until ${unlock.toDateString()}! The countdown is still ticking down.`);
+            } else {
+                alert(`💌 Secret Letter Unsealed:\n\n"${cap.content}"\n\n— Forever yours, ${cap.author}`);
+            }
+        }
+
+        // Bucket List
+        function renderBucketList() {
+            const grid = document.getElementById('bucketGrid');
+            const fill = document.getElementById('bucketProgressFill');
+            if (!grid) return;
+            grid.innerHTML = '';
+            let completedCount = 0;
+
+            STATE.bucketList.forEach(item => {
+                if (item.completed) completedCount++;
+                const card = document.createElement('div');
+                card.className = `bucket-item-card ${item.completed ? 'completed' : ''}`;
+                card.onclick = () => toggleBucketItem(item.id);
+
+                card.innerHTML = `
+                    <div class="bucket-checkbox"><i class="fas fa-check"></i></div>
+                    <span class="bucket-text">${item.text}</span>
+                `;
+                grid.appendChild(card);
+            });
+
+            if (fill) {
+                const percent = Math.round((completedCount / STATE.bucketList.length) * 100);
+                fill.style.width = `${percent}%`;
+            }
+        }
+
+        function toggleBucketItem(id) {
+            playHeartPop();
+            const item = STATE.bucketList.find(b => b.id === id);
+            if (item) {
+                item.completed = !item.completed;
+                if (item.completed) fireConfetti();
+                saveLocal('ms_bucket_list', STATE.bucketList);
+                renderBucketList();
+            }
+        }
+
+        // Blessings
+        function renderBlessings() {
+            const grid = document.getElementById('blessingsWallGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            STATE.blessings.forEach(b => {
+                const card = document.createElement('div');
+                card.className = 'blessing-card';
+                card.innerHTML = `
+                    <div class="blessing-sender">${b.name}</div>
+                    <div class="blessing-time">${b.time}</div>
+                    <p class="blessing-message">${b.message}</p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function postBlessing() {
+            const nameEl = document.getElementById('blessingName');
+            const msgEl = document.getElementById('blessingMessage');
+            const name = nameEl ? nameEl.value.trim() : '';
+            const msg = msgEl ? msgEl.value.trim() : '';
+
+            if (!name || !msg) {
+                alert('Please enter your name and a sweet blessing ❤️');
+                return;
+            }
+
+            playHeartPop();
+            fireConfetti();
+            STATE.blessings.unshift({ name: name, message: msg, time: 'Just now' });
+            saveLocal('ms_blessings', STATE.blessings);
+            renderBlessings();
+
+            if (nameEl) nameEl.value = '';
+            if (msgEl) msgEl.value = '';
+
+            alert('Your prayer has been posted onto our wall of blessings! 🌸');
+
+            if (STATE.supabaseClient) {
+                STATE.supabaseClient.from('guest_blessings').insert([{ name: name, message: msg }]).then(() => {}).catch(() => {});
+            }
+        }
+
+        // Admin Suite Modal
+        function openAdminModal() {
+            if (!STATE.currentUser || STATE.currentUser.role !== 'admin') {
+                alert('Access Restricted to Syed Mahin Islam.');
+                return;
+            }
+            playChime(600);
+            const modal = document.getElementById('adminModal');
+            if (modal) modal.classList.add('active');
+
+            const passEl = document.getElementById('adminSamintaPassword');
+            if (passEl) passEl.textContent = STATE.credentials.saminta.password;
+
+            const diaryMirror = document.getElementById('adminDiaryMirror');
+            if (diaryMirror) diaryMirror.textContent = STATE.samintaDiaryContent || '(No diary entries recorded yet)';
+
+            renderAdminRatings();
+        }
+
+        function closeAdminModal() {
+            const modal = document.getElementById('adminModal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        function switchAdminTab(tabKey) {
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.admin-panel-content').forEach(p => p.classList.remove('active'));
+
+            const tabMap = {
+                credentials: 'adminPanelCredentials',
+                ratings: 'adminPanelRatings',
+                diary: 'adminPanelDiary',
+                config: 'adminPanelConfig',
+                memory: 'adminPanelMemory'
+            };
+
+            const targetId = tabMap[tabKey];
+            if (targetId) {
+                const el = document.getElementById(targetId);
+                if (el) el.classList.add('active');
+            }
+            event.target.classList.add('active');
+        }
+
+                function getMoodEmoji(mood) {
+            const map = {
+                'Magical': '🥰',
+                'Peaceful': '😊',
+                'Cozy': '🥱',
+                'Longing': '🥺',
+                'Needs Hug': '🌧️'
+            };
+            return map[mood] || '❤️';
+        }
+
+        function renderSharedRatings() {
+            const feed = document.getElementById('sharedRatingsFeed');
+            if (!feed) return;
+            feed.innerHTML = '';
+
+            if (!STATE.dayRatings || STATE.dayRatings.length === 0) {
+                feed.innerHTML = '<div style="color: var(--text-muted); font-size: 0.88rem; text-align: center; padding: 20px;">No days recorded yet. Choose an emoji above to record today! 🌸</div>';
+                return;
+            }
+
+            STATE.dayRatings.forEach(r => {
+                const isMahin = (r.sender && r.sender.includes('Mahin'));
+                const card = document.createElement('div');
+                card.style.cssText = 'background: rgba(255, 255, 255, 0.035); border: 1px solid ' + (isMahin ? 'rgba(245, 158, 11, 0.25)' : 'rgba(96, 165, 250, 0.25)') + '; border-radius: var(--radius-md); padding: 16px 20px; transition: transform 0.2s ease;';
+                
+                let noteHtml = '';
+                if (r.note) {
+                    noteHtml = '<p style="font-size: 0.92rem; color: var(--text-secondary); margin: 6px 0 0 0; line-height: 1.5; font-style: italic; background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 8px;">"' + r.note + '"</p>';
+                }
+
+                card.innerHTML = '<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">' +
+                    '<div style="display: flex; align-items: center; gap: 8px;">' +
+                        '<span style="font-size: 0.8rem; font-weight: 700; color: ' + (isMahin ? '#fbbf24' : '#60a5fa') + '; background: rgba(0,0,0,0.35); padding: 3px 10px; border-radius: 20px;">' +
+                            (isMahin ? '💛 Mahin' : '💙 Saminta') +
+                        '</span>' +
+                        '<span style="font-size: 1.15rem;">' + getMoodEmoji(r.mood) + '</span>' +
+                        '<strong style="font-size: 0.95rem; color: #fff;">' + r.mood + '</strong>' +
+                    '</div>' +
+                    '<span style="font-size: 0.76rem; color: var(--text-muted);">' + r.date + '</span>' +
+                '</div>' + noteHtml;
+                feed.appendChild(card);
+            });
+        }
+
+        function renderAdminRatings() {
+            const list = document.getElementById('adminRatingsList');
+            if (!list) return;
+            list.innerHTML = '';
+            if (STATE.dayRatings.length === 0) {
+                list.innerHTML = '<div style="color: var(--text-muted); font-size: 0.86rem;">No emotion ratings recorded yet.</div>';
+                return;
+            }
+
+            STATE.dayRatings.forEach(r => {
+                const card = document.createElement('div');
+                card.style.cssText = 'background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 14px;';
+                card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="font-weight: 600; color: #fff;">${r.sender} — <strong style="color: var(--rose-400);">${r.mood}</strong></span>
+                        <span style="font-size: 0.76rem; color: var(--text-muted);">${r.date}</span>
+                    </div>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">${r.note || '(No note attached)'}</p>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function changeAdminPassword() {
+            const inp = document.getElementById('adminNewPass');
+            if (!inp || !inp.value.trim()) return;
+            STATE.credentials.admin.password = inp.value.trim();
+            saveLocal('ms_creds', STATE.credentials);
+            inp.value = '';
+            alert('Mahin\'s password updated!');
+        }
+
+        function saveCloudConfig() {
+            const url = document.getElementById('cfgSupabaseUrl').value.trim();
+            const key = document.getElementById('cfgSupabaseKey').value.trim();
+            const topic = document.getElementById('cfgNtfyTopic').value.trim() || 'mahin-saminta-love-sanctuary';
+
+            STATE.ntfyTopic = topic;
+            saveLocal('ms_supabase_url', url);
+            saveLocal('ms_supabase_key', key);
+            saveLocal('ms_ntfy_topic', topic);
+
+            setupNtfyListener();
+            alert('Settings saved!');
+            initCloudServices();
+        }
+
+        function addNewMemory() {
+            const date = document.getElementById('newMemDate').value;
+            const title = document.getElementById('newMemTitle').value.trim();
+            const desc = document.getElementById('newMemDesc').value.trim();
+            if (!date || !title) return;
+
+            STATE.milestones.push({ date: date, title: title, desc: desc || 'A golden memory.', icon: 'star' });
+            renderTimeline();
+            alert('Memory added!');
+            closeAdminModal();
+        }
+
+        // =========================================================================
+        // SUPABASE REALTIME & CLOUD SERVICES
+        // =========================================================================
+        function initCloudServices() {
+            const url = localStorage.getItem('ms_supabase_url') || 'https://iqsutvzenfwwygfvcenl.supabase.co';
+            const key = localStorage.getItem('ms_supabase_key') || 'sb_publishable_ZOQRLbKYg1UNWUWx4efULA_WyXQUTYY';
+
+            if (url && key && window.supabase) {
+                try {
+                    STATE.supabaseClient = window.supabase.createClient(url, key);
+                    syncFromSupabase();
+                } catch(e) {}
+            }
+        }
+
+        async function syncFromSupabase() {
+            if (!STATE.supabaseClient) return;
+            try {
+                // 1. Fetch Saminta's Diary
+                const { data: diaryData } = await STATE.supabaseClient.from('saminta_diary').select('*').limit(1);
+                if (diaryData && diaryData.length > 0 && diaryData[0].content) {
+                    STATE.samintaDiaryContent = diaryData[0].content;
+                    const diaryText = document.getElementById('samintaDiaryText');
+                    if (diaryText) diaryText.value = STATE.samintaDiaryContent;
+                    const mirror = document.getElementById('adminDiaryMirror');
+                    if (mirror) mirror.textContent = STATE.samintaDiaryContent;
+                }
+
+                // 2. Fetch Day Ratings
+                const { data: ratingsData } = await STATE.supabaseClient.from('day_ratings').select('*').order('created_at', { ascending: false });
+                if (ratingsData && ratingsData.length > 0) {
+                    STATE.dayRatings = ratingsData.map(r => ({
+                        date: new Date(r.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                        mood: r.mood,
+                        note: r.note,
+                        sender: r.sender_name || 'Saminta Saba',
+                        timestamp: new Date(r.created_at).getTime()
+                    }));
+                    renderAdminRatings();
+                    renderSharedRatings();
+                }
+
+                // 3. Fetch Guest Blessings
+                const { data: blessingsData } = await STATE.supabaseClient.from('guest_blessings').select('*').order('created_at', { ascending: false });
+                if (blessingsData && blessingsData.length > 0) {
+                    STATE.blessings = blessingsData.map(b => ({
+                        name: b.name,
+                        message: b.message,
+                        time: new Date(b.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                    }));
+                    renderBlessings();
+                }
+
+                // 4. Fetch Users Status & Streak
+                const { data: usersData } = await STATE.supabaseClient.from('sanctuary_users').select('*');
+                if (usersData && usersData.length > 0) {
+                    usersData.forEach(u => {
+                        if (u.role === 'admin') {
+                            if (u.streak_count) STATE.streakCount = Math.max(STATE.streakCount, u.streak_count);
+                            if (u.last_checkin) {
+                                const checkinDate = new Date(u.last_checkin);
+                                const today = new Date();
+                                if (checkinDate.toDateString() === today.toDateString()) {
+                                    STATE.attendance.mahin.checked = true;
+                                    STATE.attendance.mahin.time = checkinDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                }
+                            }
+                        } else if (u.role === 'saminta') {
+                            if (u.last_checkin) {
+                                const checkinDate = new Date(u.last_checkin);
+                                const today = new Date();
+                                if (checkinDate.toDateString() === today.toDateString()) {
+                                    STATE.attendance.saminta.checked = true;
+                                    STATE.attendance.saminta.time = checkinDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                }
+                            }
+                        }
+                    });
+                    updateStreakUI();
+                }
+            } catch(err) {}
+        }
+
+        function fireConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 50, spread: 60, origin: { y: 0.65 }, colors: ['#fb7185', '#ffd1dc', '#fbbf24', '#60a5fa'] });
+            }
+        }
+
+        return {
+            init,
+            toggleMusic,
+            toggleSFX,
+            switchLoginTab,
+            handleLogin,
+            loginAsGuest,
+            lockAndShowGate,
+            handleCheckIn,
+            sendMissYouPing,
+            triggerVirtualHug,
+            replyPing,
+            closePingToast,
+            selectMood,
+            submitDayRating,
+            handleDiaryInput,
+            viewCapsule,
+            postBlessing,
+            openAdminModal,
+            closeAdminModal,
+            switchAdminTab,
+            changeAdminPassword,
+            saveCloudConfig,
+            testNtfyPush,
+            addNewMemory
+        };
+    })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        LoveApp.init();
+    });
+    </script>
+</body>
+</html>
