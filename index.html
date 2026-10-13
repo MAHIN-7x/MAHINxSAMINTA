@@ -143,9 +143,7 @@
             inset: 0 !important;
             width: 100vw !important;
             height: 100vh !important;
-            background: rgba(5, 3, 10, 0.92) !important;
-            backdrop-filter: blur(28px) saturate(180%);
-            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            background: #080512 !important; /* Solid sleek obsidian - Zero lag, zero GPU strain */
             z-index: 9999999 !important;
             display: flex !important;
             align-items: center !important;
@@ -154,8 +152,8 @@
             margin: 0 !important;
             opacity: 1;
             visibility: visible;
-            overflow: hidden !important; /* No scrollbar or bottom empty void */
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            overflow: hidden !important;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
         }
 
         @media (max-height: 640px) {
@@ -1401,16 +1399,21 @@
                 <i class="fas fa-volume-high"></i>
             </button>
 
-            <!-- User Pill / Switch Account -->
-            <div class="user-pill" id="userPill" onclick="LoveApp.lockAndShowGate()" title="Switch user or lock">
+            <!-- User Pill: Clicking opens Admin Suite if Admin! -->
+            <div class="user-pill" id="userPill" onclick="LoveApp.handleUserPillClick()" title="Profile / Admin Controls">
                 <div class="user-avatar-sm" id="userAvatarIcon">M</div>
                 <span id="userNameDisplay">Mahin</span>
                 <span class="admin-badge" id="adminBadge" style="display:none;">ADMIN</span>
             </div>
 
-            <!-- Admin Crown (Only for Mahin) -->
-            <button class="icon-btn" id="adminSuiteBtn" style="display: none; border-color: #fbbf24; color: #fbbf24;" title="Admin Suite" onclick="LoveApp.openAdminModal()">
+            <!-- Admin Crown Quick Launch -->
+            <button class="icon-btn" id="adminSuiteBtn" style="display: none; border-color: #fbbf24; color: #fbbf24;" title="Open Admin Suite" onclick="LoveApp.openAdminModal()">
                 <i class="fas fa-crown"></i>
+            </button>
+
+            <!-- Explicit Lock / Switch Account Button -->
+            <button class="icon-btn" title="Lock & Switch Account" onclick="LoveApp.lockAndShowGate()">
+                <i class="fas fa-arrow-right-from-bracket"></i>
             </button>
         </div>
     </nav>
@@ -1901,6 +1904,9 @@
 
                 const savedTopic = localStorage.getItem('ms_ntfy_topic');
                 if (savedTopic) STATE.ntfyTopic = savedTopic;
+
+                const savedMilestones = localStorage.getItem('ms_milestones');
+                if (savedMilestones) STATE.milestones = JSON.parse(savedMilestones);
             } catch (e) {}
 
             // DO NOT auto-unlock gate. User wanted login page to appear upon entering site!
@@ -1949,7 +1955,12 @@
 
             let lastTime = 0;
             function draw(currentTime) {
-                if (currentTime - lastTime > 16) { // Cap at ~60fps for battery & smoothness
+                // Pause canvas calculations while login gate is active to guarantee 120fps typing with zero lag
+                if (document.body.classList.contains('gate-active')) {
+                    requestAnimationFrame(draw);
+                    return;
+                }
+                if (currentTime - lastTime > 16) {
                     lastTime = currentTime;
                     ctx.clearRect(0, 0, width, height);
                     for (let i = 0; i < stars.length; i++) {
@@ -2069,6 +2080,14 @@
         // =========================================================================
         // GATEWAY OPEN / CLOSE CONTROLLER
         // =========================================================================
+                function handleUserPillClick() {
+            if (STATE.currentUser && STATE.currentUser.role === 'admin') {
+                openAdminModal(); // Open Admin Suite when clicking Admin!
+            } else {
+                lockAndShowGate(); // If guest or other role, open login gate
+            }
+        }
+
         function unlockGate() {
             const gate = document.getElementById('entryGateOverlay');
             if (gate) {
@@ -2778,12 +2797,43 @@
             const date = document.getElementById('newMemDate').value;
             const title = document.getElementById('newMemTitle').value.trim();
             const desc = document.getElementById('newMemDesc').value.trim();
-            if (!date || !title) return;
+            if (!date || !title) {
+                alert('Please provide both date and milestone title.');
+                return;
+            }
 
-            STATE.milestones.push({ date: date, title: title, desc: desc || 'A golden memory.', icon: 'star' });
+            const newMilestone = {
+                date: date,
+                title: title,
+                desc: desc || 'An eternal memory etched into our sacred journey.',
+                icon: 'star'
+            };
+
+            STATE.milestones.push(newMilestone);
+            // Sort chronologically
+            STATE.milestones.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            saveLocal('ms_milestones', STATE.milestones);
             renderTimeline();
-            alert('Memory added!');
+
+            // Push to Supabase if connected
+            if (STATE.supabaseClient) {
+                STATE.supabaseClient.from('milestones').insert([{
+                    date: date,
+                    title: title,
+                    desc: desc || 'An eternal memory.',
+                    icon: 'star'
+                }]).then(() => {
+                    console.log('Milestone pushed to Supabase live!');
+                }).catch(() => {});
+            }
+
+            alert('Milestone added live to the timeline!');
             closeAdminModal();
+
+            // Clear inputs
+            document.getElementById('newMemTitle').value = '';
+            document.getElementById('newMemDesc').value = '';
         }
 
         // =========================================================================
@@ -2839,6 +2889,23 @@
                     renderBlessings();
                 }
 
+                // Live Milestones from Supabase
+                const { data: dbMilestones } = await STATE.supabaseClient.from('milestones').select('*');
+                if (dbMilestones && dbMilestones.length > 0) {
+                    dbMilestones.forEach(dm => {
+                        if (!STATE.milestones.some(m => m.title === dm.title && m.date === dm.date)) {
+                            STATE.milestones.push({
+                                date: dm.date,
+                                title: dm.title,
+                                desc: dm.desc || '',
+                                icon: dm.icon || 'star'
+                            });
+                        }
+                    });
+                    STATE.milestones.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    renderTimeline();
+                }
+
                 // 4. Fetch Users Status & Streak
                 const { data: usersData } = await STATE.supabaseClient.from('sanctuary_users').select('*');
                 if (usersData && usersData.length > 0) {
@@ -2884,6 +2951,7 @@
             handleLogin,
             loginAsGuest,
             lockAndShowGate,
+            handleUserPillClick,
             handleCheckIn,
             sendMissYouPing,
             triggerVirtualHug,
@@ -2917,5 +2985,3 @@
     </script>
 </body>
 </html>
-index.html
-Displaying index.html.
