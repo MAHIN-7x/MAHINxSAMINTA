@@ -2821,7 +2821,7 @@
                 STATE.supabaseClient.from('milestones').insert([{
                     date: date,
                     title: title,
-                    desc: desc || 'An eternal memory.',
+                    description: desc || 'An eternal memory.',
                     icon: 'star'
                 }]).then(() => {
                     console.log('Milestone pushed to Supabase live!');
@@ -2897,7 +2897,7 @@
                             STATE.milestones.push({
                                 date: dm.date,
                                 title: dm.title,
-                                desc: dm.desc || '',
+                                desc: dm.description || dm.desc || '',
                                 icon: dm.icon || 'star'
                             });
                         }
